@@ -13,6 +13,7 @@ $conf = [
         'user' => '',
         'password' => '',
         'database' => '',
+        'port' => '',
         'querys' => [
           'select name from user limit 1'
         ]

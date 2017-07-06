@@ -26,12 +26,17 @@ Class Eye extends AbstractDb {
   }
 
   protected function conn_mysqli(){
+
     $this->mysqli = new mysqli($this->conf['host'], $this->conf['user'] , $this->conf['password']);
     if($this->mysqli->connect_errno)
       throw new Exception('mysqli: ' . $this->mysqli->connect_error, $this->mysqli->connect_errno );
+
   }
 
   public function testQuery(){
+
+    $this->pdo = new PDO();
+
 
   }
 

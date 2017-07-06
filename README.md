@@ -9,3 +9,11 @@ This client can be used with Zabbix and others too, just setup those to read the
 ## Dependencies
 
 * PHP:5.6, why? For compatibility.
+
+## Contribe
+
+### How dev
+
+first create a docker network
+
+$ docker network create --driver bridge beholder-network

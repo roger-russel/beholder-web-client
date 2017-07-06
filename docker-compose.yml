@@ -3,9 +3,14 @@ version: '2'
 services:
   beholder-web-client:
     container_name: beholder-web-client
-    build: ./
+    build: .
     ports:
       - 8069:80
     volumes:
       - ./:/var/www
       - ./tests/acceptance/fixtures:/var/www/html
+
+networks:
+  default:
+    external:
+      name: beholder-network
