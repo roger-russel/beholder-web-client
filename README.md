@@ -1,6 +1,4 @@
-# Beholder WEB CLIENT
-
-'''Need someone to keep an eye on your servers?''''
+# Beholder WEB CLIENT, Need someone to keep an eye on your servers?
 
 ![Try Beholder](https://raw.githubusercontent.com/RogerRussel/beholder-web-client/master/opt/img/beholder.jpg)
 
