@@ -1,0 +1,19 @@
+{
+  "name": "RogerRussel/beholder-web-client",
+  "description": "A simple php monitoring client",
+  "type": "System",
+  "authors": [
+        {
+            "name": "Roger Russel",
+            "email": "roger@rrussel.org"
+        }
+  ],
+  "require-dev": {
+    "codeception/codeception": "^2.3"
+  },
+  "autoload": {
+      "psr-4": {
+          "BeholderWebClient\\": "src/"
+      }
+  }
+}
