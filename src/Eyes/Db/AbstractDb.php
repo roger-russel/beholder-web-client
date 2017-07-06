@@ -2,6 +2,8 @@
 
 namespace BeholderWebClient\Eyes\Db;
 
+use Exception;
+
 use BeholderWebClient\Eyes\Status;
 use BeholderWebClient\Eyes\AbstractEye;
 
@@ -21,6 +23,11 @@ abstract class AbstractDb extends AbstractEye implements iDb {
       $this->testConn();
       $this->testQuery();
 
+      if( is_null($this->code) ) {
+        $this->code = Status::ok;
+        $this->message = 'everything worked';
+      }
+
     }catch( Exception $ex ) {
       $this->code = Status::internalServerError;
       $this->message = $ex->getMessage();
@@ -34,10 +41,6 @@ abstract class AbstractDb extends AbstractEye implements iDb {
 
   public function getStatusCode(){
     return $this->code;
-  }
-
-  protected function conn_pdo(){
-    $this->pdo = new PDO($this->conf['host'], $this->conf['user'] , $this->conf['password']);
   }
 
 }

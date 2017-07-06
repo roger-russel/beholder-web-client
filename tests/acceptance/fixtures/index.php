@@ -7,13 +7,13 @@ $conf = [
   'eyes' => [
       'DB' => [
         'type' => 'Db\MySQL',
-        'drive' => 'mysql',
+        'drive' => 'PDO',
         'connect' => true,
-        'hostname' => 'teste',
-        'user' => '',
-        'password' => '',
-        'database' => '',
-        'port' => '',
+        'host' => 'beholder-test-mysql',
+        'user' => 'root',
+        'password' => 'initial1234',
+        'dbname' => 'beholder_test',
+        'port' => '3306',
         'querys' => [
           'select name from user limit 1'
         ]

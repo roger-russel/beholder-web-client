@@ -20,4 +20,7 @@ RUN php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 RUN php -r "unlink('composer-setup.php');"
 
 # Install PHP Modules
-#RUN docker-php-ext-install \
+RUN docker-php-ext-install \
+  pdo \
+  pdo_mysql \
+  mysqli
