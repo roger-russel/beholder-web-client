@@ -10,10 +10,26 @@ This client can be used with Zabbix and others too, just setup those to read the
 
 * PHP:5.6, why? For compatibility.
 
+Some modules could have more depencencies, please look at src/Eyes/ModuleName/Readme.md too.
+
+## How Install
+
+### How use
+
+
 ## Contribe
 
 ### How dev
 
-first create a docker network
+With docker is easy and fun!
+
+1. Create a docker network
 
 $ docker network create --driver bridge beholder-network
+
+2. Build project and up the project
+
+$ docker-compose build
+$ docker-compose up
+
+3. 

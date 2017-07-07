@@ -21,7 +21,9 @@ abstract class AbstractDb extends AbstractEye implements iDb {
     try {
 
       $this->testConn();
-      $this->testQuery();
+
+      if(isset($this->conf['querys']))
+        $this->testQuery();
 
       if( is_null($this->code) ) {
         $this->code = Status::ok;
