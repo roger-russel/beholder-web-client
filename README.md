@@ -9,12 +9,61 @@ This client can be used with Zabbix and others too, just setup those to read the
 ## Dependencies
 
 * PHP:5.6, why? For compatibility.
+* Composer
 
 Some modules could have more depencencies, please look at src/Eyes/ModuleName/Readme.md too.
 
 ## How Install
 
+At your composer.json file put repositories and require like this:
+
+<code>
+{
+  "name": "YourProjectName",
+  "description": "Your project description",
+  "type": "YourProjectType",
+  "repositories": [{
+      "type" : "vcs",
+      "url": "https://github.com/RogerRussel/beholder-web-client.git"
+  }],
+  "require": {
+    "RogerRussel/beholder-web-client": "*"
+  }
+}
+</code>
+
+Then run:
+
+$ composer install;
+
 ### How use
+
+you can look to especific model configuration at doc/ModelName folder.
+
+<code>
+
+require 'vendor/autoload.php';
+
+$conf = [
+  'eyes' => [
+      'DB' => [ // This DB is juts an alias, it can be anything
+        'type' => 'Db\MySQL', // Model wich will be used, this will be usage Db\Mysql Model.
+//      'driver' => 'PDO', // If not set it will try use into this order PDO, mysqli and mysql, if setted it will force use which as setted.
+        'host' => 'beholder-test-mysql',
+        'user' => 'root',
+        'password' => 'initial1234',
+//      'port' => 3306, // If not set it will use the default port 3306
+        'dbname' => 'beholder_test',
+        'querys' => [ //Query which will run on test, it execut into this order CREATE, INSERT, UPDATE, SELECT and DROP.
+          'select' => 'select name from user limit 1'
+        ]
+      ]
+  ]
+];
+
+$beholder = new BeholderWebClient\Observer($conf);
+$beholder->run();
+</code>
 
 
 ## Contribe
@@ -32,4 +81,4 @@ $ docker network create --driver bridge beholder-network
 $ docker-compose build
 $ docker-compose up
 
-3. 
+3.

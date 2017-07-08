@@ -8,14 +8,13 @@ $conf = [
       'DB' => [
         'type' => 'Db\MySQL',
         'drive' => 'PDO',
-        'connect' => true,
         'host' => 'beholder-test-mysql',
         'user' => 'root',
         'password' => 'initial1234',
         'dbname' => 'beholder_test',
         'port' => '3306',
         'querys' => [
-          'select name from user limit 1'
+          'select' => ['select name from user limit 1']
         ]
       ]
   ]

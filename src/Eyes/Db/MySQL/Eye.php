@@ -3,29 +3,52 @@
 namespace BeholderWebClient\Eyes\Db\MySQL;
 
 use Exception;
-use PDO;
-use mysqli;
-use BeholderWebClient\Eyes\Status as Status;
+use BeholderWebClient\Eyes\Db\DbStatus as Status;
 use BeholderWebClient\Eyes\Db\AbstractDb;
 
 Class Eye extends AbstractDb {
 
-  protected $mysqli;
-  const port = 3306;
+  protected $adapter;
+
+  const default_port = 3306;
+
+  public function __construct($conf){
+    parent::__construct($conf);
+
+    if(isset($this->conf['driver'])){
+      $this->selectAdapter($this->conf['driver']);
+    }else{
+      $this->selectAdapterAuto();
+    }
+
+  }
+
+  public function checkRequirement(){
+
+    if(is_null($this->adapter))
+      throw new Exception('No Mysql driver found, it tried use PDO, mysqli and mysql, but neither are they found.', Status::internalServerError);
+
+  }
+
+  protected function getDefaultPort(){
+    return self::default_port;
+  }
 
   public function testConn(){
 
-    switch(strtolower($this->conf['drive'])){
-      case 'mysqli':
-      case 'mysql':
-        $this->mysqli_conn();
-        break;
-      case 'pdo':
-      default:
-        $this->conn_pdo();
+    try {
 
+      $this->adapter->testConn();
+
+    } catch(Exception $ex) {
+      $this->code = $ex->getCode();
+      $this->message = $ex->getMessage();
     }
 
+  }
+
+  public function testQuery(){
+    $this->adapter->testQuery();
   }
 
   protected function mysqli_conn(){
@@ -37,32 +60,31 @@ Class Eye extends AbstractDb {
 
   }
 
-  protected function conn_pdo(){
-    $port = isset($this->conf['port']) ? $this->conf['port'] : self::port;
-    $dns = "mysql:host={$this->conf['host']};dbname={$this->conf['dbname']};port={$port};";
-    $this->pdo = new PDO($dns, $this->conf['user'] , $this->conf['password']);
+  protected function selectAdapter($adapter){
+
+      $adapterName = ucfirst(strtolower($adapter));
+
+      if(is_class("\BeholderWebClient\Eyes\Db\MySQL\{$adapterName}")){
+        $this->adapter = new ${'adapterName'}($this->conf);
+      }
+
   }
 
-  public function testQuery(){
+  protected function selectAdapterAuto(){
 
-    switch(strtolower($this->conf['drive'])){
-      case 'mysqli':
-      case 'mysql':
-        $this->mysqli_testQuery();
+    switch(true){
+      case class_exists("PDO"):
+        $this->adapter = new Pdo($this->conf);
         break;
-      case 'pdo':
-      default:
-        $this->pdo_testQuery();
+      case class_exists("mysqli"):
+        $this->adapter = new Mysqli($this->conf);
+        break;
+      case function_exists("mysql_connect"):
+        $this->adapter = new Mysql($this->conf);
+        break;
     }
 
   }
 
-  protected function mysqli_testQuery(){
-
-  }
-
-  protected function pdo_testQuery(){
-
-  }
 
 }
