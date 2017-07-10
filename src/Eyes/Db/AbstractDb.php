@@ -30,9 +30,11 @@ abstract class AbstractDb extends AbstractEye implements iDb {
 
     try {
 
+      $this->checkRequirement();
+
       $this->testConn();
 
-      if(isset($this->conf['querys']) and is_null($this->code))
+      if(isset($this->conf['query']) and is_null($this->code))
         $this->testQuery();
 
       if( is_null($this->code) ) {

@@ -28,6 +28,8 @@ Class Eye extends AbstractDb {
     if(is_null($this->adapter))
       throw new Exception('No Mysql driver found, it tried use PDO, mysqli and mysql, but neither are they found.', Status::internalServerError);
 
+    $this->adapter->checkRequirement();
+
   }
 
   protected function getDefaultPort(){
@@ -64,8 +66,14 @@ Class Eye extends AbstractDb {
 
       $adapterName = ucfirst(strtolower($adapter));
 
-      if(is_class("\BeholderWebClient\Eyes\Db\MySQL\{$adapterName}")){
-        $this->adapter = new ${'adapterName'}($this->conf);
+      $adapterFullName = "\BeholderWebClient\Eyes\Db\MySQL\\{$adapterName}";
+
+      if(class_exists($adapterFullName)){
+
+        $this->adapter = new ${'adapterFullName'}($this->conf);
+
+      } else {
+        throw new Exception("Driver: {$adapter}, is not implemented", Status::internalServerError);
       }
 
   }
