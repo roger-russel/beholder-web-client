@@ -47,6 +47,16 @@ abstract class AbstractDb extends AbstractEye implements iDb {
       $this->message = $ex->getMessage();
     }
 
+    $this->closeConnection();
+
+  }
+
+  protected function closeConnection(){
+
+    if($this->adapter){
+      $this->adapter->closeConnection();
+    }
+
   }
 
   public function getMessage(){

@@ -86,7 +86,7 @@ class Pdo  extends AbstractAdapter {
 
       if(count($result) < 1)
         throw new Exception(Status::querySelectFail_number, Status::querySelectFail);
-      
+
 
     }
 
@@ -121,6 +121,10 @@ class Pdo  extends AbstractAdapter {
     } catch(Exception $ex){
         throw new Exception(Status::couldNotDropTable . " - {$sql} " . $ex->getMessage(), Status::couldNotDropTable_number);
     }
+  }
+
+  public function closeConnection(){
+    $this->pdo = null;
   }
 
 }

@@ -1,7 +1,8 @@
 <?php
 
-namespace BeholderWebClient\Eyes\Db; 
+namespace BeholderWebClient\Eyes\Db;
 
 interface iDb {
+
 
 }

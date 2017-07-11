@@ -5,7 +5,7 @@ require ROOT . '/vendor/autoload.php';
 
 $conf = [
   'eyes' => [
-      'DB' => [
+      'DB:allin' => [
         'type' => 'Db\MySQL',
 //        'driver' => 'mysqli',
         'host' => 'beholder-test-mysql',
@@ -13,9 +13,7 @@ $conf = [
         'password' => 'initial1234',
         'dbname' => 'beholder_test',
         'port' => '3306',
-        'query' => [
-          'select' => ['select name from user limit 1']
-        ]
+
       ]
   ]
 ];

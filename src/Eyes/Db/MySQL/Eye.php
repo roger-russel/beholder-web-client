@@ -53,15 +53,6 @@ Class Eye extends AbstractDb {
     $this->adapter->testQuery();
   }
 
-  protected function mysqli_conn(){
-
-    $this->mysqli = new mysqli($this->conf['host'], $this->conf['user'] , $this->conf['password']);
-
-    if($this->mysqli->connect_errno)
-      throw new Exception('mysqli: ' . $this->mysqli->connect_error, $this->mysqli->connect_errno );
-
-  }
-
   protected function selectAdapter($adapter){
 
       $adapterName = ucfirst(strtolower($adapter));
