@@ -7,6 +7,8 @@ use BeholderWebClient\Eyes\Db\DbStatus as Status;
 
 class Mysqli extends AbstractAdapter {
 
+  protected function $mysqli;
+
   public function checkRequirement(){
 
     if(!class_exists("mysqli"))
@@ -16,14 +18,40 @@ class Mysqli extends AbstractAdapter {
 
   public function testConn(){
 
+      $this->mysqli = new mysqli($this->conf['host'], $this->conf['user'] , $this->conf['password']);
 
+      if($this->mysqli->connect_errno)
+        throw new Exception('mysqli: ' . $this->mysqli->connect_error, $this->mysqli->connect_errno );
 
   }
 
   public function testQuery(){
 
+    $mergedArrQuery = $this->getMergedArrayQuery();
 
+    $result = false;
 
+    foreach( $mergedArrQuery as $arrQuery ){
+      foreach( $arrQuery['query'] as $query ) {
+
+          $result = $this->mysqli->query($query);
+
+          if( $result !== false and $result !== true )
+            $result->close();
+
+          if($this->mysqli->error)
+            throw new Exception($arrQuery['errMessage'] . ' - ' . $query, $arrQuery['errNo']);
+
+      }
+    }
+
+    if(!$result)
+      parent::throwQueryBadFormated();
+
+  }
+
+  public function closeConnection(){
+    $this->mysqli->close();
   }
 
 }
