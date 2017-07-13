@@ -14,7 +14,7 @@ class Pdo  extends AbstractAdapter {
   public function checkRequirement(){
 
     if(!class_exists("PDO"))
-      throw new Exception(parent::PREFIX_RQ_FAIL . 'PDO driver not found', Status::internalServerError_number);
+      throw new Exception(parent::PREFIX_RQ_FAIL . 'PDO driver not found', Status::INTERNAL_SERVER_ERROR_NUMBER);
 
   }
 
@@ -38,16 +38,16 @@ class Pdo  extends AbstractAdapter {
         $this->execCreatequery('create');
 
       if(isset($this->conf['query']['insert']))
-        $this->execquery('insert', Status::queryInsertFail_number, Status::queryInsertFail);
+        $this->execquery('insert', Status::QUERY_INSERT_FAIL_NUMBER, Status::QUERY_INSERT_FAIL);
 
       if(isset($this->conf['query']['update']))
-        $this->execquery('update', Status::queryUpdateFail_number, Status::queryUpdateFail);
+        $this->execquery('update', Status::QUERY_UPDATE_FAIL_NUMBER, Status::QUERY_UPDATE_FAIL);
 
       if(isset($this->conf['query']['select']))
         $this->selectquery();
 
       if(isset($this->conf['query']['delete']))
-        $this->execquery('delete', Status::queryDeleteFail_number, Status::queryDeleteFail);
+        $this->execquery('delete', Status::QUERY_DELETE_FAIL_NUMBER, Status::QUERY_DELETE_FAIL);
 
       if(isset($this->conf['query']['drop']))
         $this->execDropquery('drop');
@@ -85,7 +85,7 @@ class Pdo  extends AbstractAdapter {
       $result = $sth->fetch(PHPDO::FETCH_NUM);
 
       if(count($result) < 1)
-        throw new Exception(Status::querySelectFail_number, Status::querySelectFail);
+        throw new Exception(Status::QUERY_SELECT_FAIL_NUMBER, Status::QUERY_SELECT_FAIL);
 
 
     }
@@ -103,7 +103,7 @@ class Pdo  extends AbstractAdapter {
       }
 
     } catch(Exception $ex){
-        throw new Exception(Status::couldNotCreateTable . " - {$sql} " . $ex->getMessage(), Status::couldNotCreateTable_number);
+        throw new Exception(Status::COULD_NOT_CREATE_TABLE . " - {$sql} " . $ex->getMessage(), Status::COULD_NOT_CREATE_TABLE_NUMBER);
     }
 
   }
@@ -119,7 +119,7 @@ class Pdo  extends AbstractAdapter {
       }
 
     } catch(Exception $ex){
-        throw new Exception(Status::couldNotDropTable . " - {$sql} " . $ex->getMessage(), Status::couldNotDropTable_number);
+        throw new Exception(Status::COULD_NOT_DROP_TABLE . " - {$sql} " . $ex->getMessage(), Status::COULD_NOT_DROP_TABLE_NUMBER);
     }
   }
 

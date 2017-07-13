@@ -12,7 +12,7 @@ class Mysqli extends AbstractAdapter {
   public function checkRequirement(){
 
     if(!class_exists("mysqli"))
-      throw new Exception(parent::PREFIX_RQ_FAIL . 'Mysqli driver not found', Status::internalServerError_number);
+      throw new Exception(parent::PREFIX_RQ_FAIL . 'Mysqli driver not found', Status::INTERNAL_SERVER_ERROR_NUMBER);
 
   }
 

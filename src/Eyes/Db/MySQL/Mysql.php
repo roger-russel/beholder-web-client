@@ -12,7 +12,7 @@ class Mysql extends AbstractAdapter {
   public function checkRequirement(){
 
     if(!function_exists("mysql_connect"))
-      throw new Exception('Mysql driver not found', Status::internalServerError_number);
+      throw new Exception('Mysql driver not found', Status::INTERNAL_SERVER_ERROR_NUMBER);
 
   }
 

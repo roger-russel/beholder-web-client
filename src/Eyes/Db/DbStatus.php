@@ -6,37 +6,37 @@ use BeholderWebClient\Eyes\Status;
 
 class DbStatus extends Status {
 
-  const couldNotConnectAtSGBD = 'Could not connect at SGBD';
-  const couldNotConnectAtSGBD_number = 600;
+  const COULD_NOT_CONNECT_AT_SGBD = 'Could not connect at SGBD';
+  const COULD_NOT_CONNECT_AT_SGBD_NUMBER = 600;
 
-  const couldNotCreateDatabase_number = 601;
-  const couldNotCreateDatabase = 'Could not create database';
+  const COULD_NOT_CREATE_DATABASE_NUMBER = 601;
+  const COULD_NOT_CREATE_DATABASE = 'Could not create database';
 
-  const couldNotCreateSchema_number = 602;
-  const couldNotCreateSchema = 'Could not create Schema';
+  const COULD_NOT_CREATE_SCHEMA_NUMBER = 602;
+  const COULD_NOT_CREATE_SCHEMA = 'Could not create Schema';
 
-  const couldNotCreateTable_number = 603;
-  const couldNotCreateTable = 'Could not create table';
+  const COULD_NOT_CREATE_TABLE_NUMBER = 603;
+  const COULD_NOT_CREATE_TABLE = 'Could not create table';
 
-  const couldNotDropDatabase_number = 604;
-  const couldNotDropDatabase = 'Could not drop database';
+  const COULD_NOT_DROP_DATABASE_NUMBER = 604;
+  const COULD_NOT_DROP_DATABASE = 'Could not drop database';
 
-  const couldNotDropSchema_number = 605;
-  const couldNotDropSchema = 'Could not drop Schema';
+  const COULD_NOT_DROP_SCHEMA_NUMBER = 605;
+  const COULD_NOT_DROP_SCHEMA = 'Could not drop Schema';
 
-  const couldNotDropTable_number = 606;
-  const couldNotDropTable = 'Could not drop table';
+  const COULD_NOT_DROP_TABLE_NUMBER = 606;
+  const COULD_NOT_DROP_TABLE = 'Could not drop table';
 
-  const querySelectFail_number = 610;
-  const querySelectFail = 'Query select fail';
+  const QUERY_SELECT_FAIL_NUMBER = 610;
+  const QUERY_SELECT_FAIL = 'Query select fail';
 
-  const queryInsertFail_number = 620;
-  const queryInsertFail = 'Query insert fail';
+  const QUERY_INSERT_FAIL_NUMBER = 620;
+  const QUERY_INSERT_FAIL = 'Query insert fail';
 
-  const queryUpdateFail_number = 630;
-  const queryUpdateFail = 'Query update fail';
+  const QUERY_UPDATE_FAIL_NUMBER = 630;
+  const QUERY_UPDATE_FAIL = 'Query update fail';
 
-  const queryDeleteFail_number = 640;
-  const queryDeleteFail = 'Query delte fail';
+  const QUERY_DELETE_FAIL_NUMBER = 640;
+  const QUERY_DELETE_FAIL = 'Query delte fail';
 
 }

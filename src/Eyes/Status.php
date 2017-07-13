@@ -7,20 +7,20 @@ namespace BeholderWebClient\Eyes;
  */
 class Status {
 
-  const ok = 'Ok';
-  const ok_number = 200;
+  const OK = 'Ok';
+  const OK_NUMBER = 200;
 
-  const notFound = 'Not Found';
-  const notFound_number = 400;
+  const NOT_FOUND = 'Not Found';
+  const NOT_FOUND_NUMBER = 400;
 
-  const expectationFailed = 'Expectation Failed';
-  const expectationFailed_number = 417;
+  const EXPECTATION_FAILED = 'Expectation Failed';
+  const EXPECTATION_FAILED_NUMBER = 417;
 
-  const internalServerError = 'Internal Server Error';
-  const internalServerError_number = 500;
+  const INTERNAL_SERVER_ERROR = 'Internal Server Error';
+  const INTERNAL_SERVER_ERROR_NUMBER = 500;
 
-  const notImplemented = 'Not Implemented';
-  const notImplemented_number = 501;
+  const NOT_IMPLEMENTED = 'Not Implemented';
+  const NOT_IMPLEMENTED_NUMBER = 501;
 
   //numbers 6[0-9]{2} are reseverd to DBs usage;
 

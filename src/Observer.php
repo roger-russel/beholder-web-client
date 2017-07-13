@@ -45,6 +45,7 @@ Class Observer implements iObserver {
 
       $fullmodulename = "BeholderWebClient\\Eyes\\{$conf['type']}\\Eye";
       $eye = new ${'fullmodulename'}($this->conf['eyes'][$name]);
+      $eye->checkRequirement();
       $eye->look();
 
       $return = [

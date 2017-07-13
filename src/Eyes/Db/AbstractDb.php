@@ -30,20 +30,18 @@ abstract class AbstractDb extends AbstractEye implements iDb {
 
     try {
 
-      $this->checkRequirement();
-
       $this->testConn();
 
       if(isset($this->conf['query']) and is_null($this->code))
         $this->testQuery();
 
       if( is_null($this->code) ) {
-        $this->code = Status::ok_number;
+        $this->code = Status::OK_NUMBER;
         $this->message = 'everything worked';
       }
 
     }catch( Exception $ex ) {
-      $this->code = Status::internalServerError_number;
+      $this->code = Status::INTERNAL_SERVER_ERROR_NUMBER;
       $this->message = $ex->getMessage();
     }
 

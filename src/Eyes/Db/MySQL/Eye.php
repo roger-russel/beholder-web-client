@@ -26,7 +26,7 @@ Class Eye extends AbstractDb {
   public function checkRequirement(){
 
     if(is_null($this->adapter))
-      throw new Exception('No Mysql driver found, it tried use PDO, mysqli and mysql, but neither are they found.', Status::internalServerError);
+      throw new Exception('No Mysql driver found, it tried use PDO, mysqli and mysql, but neither are they found.', Status::INTERNAL_SERVER_ERROR);
 
     $this->adapter->checkRequirement();
 
@@ -64,7 +64,7 @@ Class Eye extends AbstractDb {
         $this->adapter = new ${'adapterFullName'}($this->conf);
 
       } else {
-        throw new Exception("Driver: {$adapter}, is not implemented", Status::internalServerError);
+        throw new Exception("Driver: {$adapter}, is not implemented", Status::INTERNAL_SERVER_ERROR);
       }
 
   }
