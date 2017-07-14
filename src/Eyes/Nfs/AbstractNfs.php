@@ -10,6 +10,7 @@ abstract class AbstractNfs extends AbstractEye implements iNfs {
 
   protected $path;
   protected $fileName;
+  protected $fullFileName;
   protected $code;
   protected $message;
 
@@ -24,7 +25,10 @@ abstract class AbstractNfs extends AbstractEye implements iNfs {
   public function __construct($conf){
     parent::__construct($conf);
     $this->resolvePath();
-    $this->fileName = isset($conf['filename']) ? $conf['filename'] : self::DEFAULT_FILE_NAME;
+
+    $this->fileName = (isset($conf['filename']) and $conf['filename']) ? $conf['filename'] : self::DEFAULT_FILE_NAME;
+    $this->fullFileName = $this->path . '/' . $this->fileName;
+
   }
 
   public function getStatusCode(){
@@ -41,13 +45,13 @@ abstract class AbstractNfs extends AbstractEye implements iNfs {
 
       $this->checkIfPathIsMounted();
 
-      if($this->conf['write']!==false) 
+      if(!isset($this->conf['write']) or $this->conf['write'] !== false)
         $this->tryWriteFile();
 
-      if(!$this->conf['read']!==false)
+      if(!isset($this->conf['read']) or $this->conf['read'] !== false)
         $this->tryReadFile();
 
-      if(!$this->conf['delete']!==false)
+      if(!isset($this->conf['write']) or $this->conf['write'] !== false)
         $this->tryDeleteFile();
 
       $this->code = Status::OK_NUMBER;
@@ -70,7 +74,7 @@ abstract class AbstractNfs extends AbstractEye implements iNfs {
        $rootDir = $this->conf['rootDir'];
     }
 
-    $this->path = realpath(str_replace('[rootDir]', $rootDir, $this->config['path']));
+    $this->path = realpath(str_replace('[rootDir]', $rootDir, $this->conf['path']));
 
     if (!$this->path)
       throw new Exception(Status::PATH_NOT_EXIST, Status::PATH_NOT_EXIST_NUMBER);

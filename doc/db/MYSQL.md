@@ -26,4 +26,6 @@ $conf = [
 
 $beholder = new BeholderWebClient\Observer($conf);
 $beholder->run();
+$beholder->writeJson();
+
 </code>

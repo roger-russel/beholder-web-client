@@ -25,26 +25,56 @@ Class Eye extends AbstractNfs {
    $p = shell_exec($cmd . $this->path);
    $f = shell_exec($cmd . $pathFather);
 
-   return $p === $f ? false: true;
+   if( $p === $f )
+     throw new Exception(Status::NOT_MOUNTED, Status::NOT_MOUNTED_NUMBER);
+
   }
 
   protected function tryWriteFile(){
 
-    $this->date = date('Y-m-d H:i:s');
+    try {
 
-    $link = fopen($this->path . '/beholder.txt','a+');
-    fwrite($link, $this->date);
-    fclose($link);
+      $this->date = date('Y-m-d H:i:s');
+
+      $link = fopen($this->fullFileName,'a+');
+      fwrite($link, $this->date . PHP_EOL);
+      fclose($link);
+
+    } catch(Exception $ex){
+
+      throw new Exception(Status::COULD_NOT_WRITE_FILE . ' - ' . $ex->getMessage(), Status::COULD_NOT_WRITE_FILE_NUMBER, $ex);
+
+    }
 
   }
 
   protected function tryReadFile(){
 
+    try {
+
+      $link = fopen($this->fullFileName,'r');
+      fclose($link);
+
+    } catch(Exception $ex){
+
+      throw new Exception(Status::COULD_NOT_READ_FILE . ' - ' . $ex->getMessage(), Status::COULD_NOT_READ_FILE_NUMBER, $ex);
+
+    }
 
 
   }
 
   protected function tryDeleteFile(){
+
+    try {
+
+      unlink($this->fullFileName);
+
+    } catch(Exception $ex){
+
+      throw new Exception(Status::COULD_NOT_DELETE_FILE . ' - ' . $ex->getMessage(), Status::COULD_NOT_DELETE_FILE_NUMBER, $ex);
+
+    }
 
   }
 

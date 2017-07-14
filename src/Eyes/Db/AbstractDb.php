@@ -37,7 +37,7 @@ abstract class AbstractDb extends AbstractEye implements iDb {
 
       if( is_null($this->code) ) {
         $this->code = Status::OK_NUMBER;
-        $this->message = 'everything worked';
+        $this->message = Status::OK;
       }
 
     }catch( Exception $ex ) {

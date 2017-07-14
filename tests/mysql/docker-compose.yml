@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+  beholder-test-mysql:
+    image: mysql:5.7.16
+    container_name: beholder-test-mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - TERM=xterm
+      - LANG=en_US.UTF-8
+      - MYSQL_ROOT_PASSWORD=initial1234
+
+networks:
+  default:
+    external:
+      name: beholder-network
