@@ -9,8 +9,8 @@ class DbStatus extends Status {
   const NO_DRIVER = 'No Mysql driver found, it tried use PDO, mysqli and mysql, but neither are they found.';
   const NO_DRIVER_NUMBER = 500; // Because it was a system error
 
-  const COULD_NOT_CONNECT_AT_SGBD = 'Could not connect at SGBD';
-  const COULD_NOT_CONNECT_AT_SGBD_NUMBER = 600;
+  const COULD_NOT_CONNECT_TO_SGBD = 'Could not connect to SGBD';
+  const COULD_NOT_CONNECT_TO_SGBD_NUMBER = 600;
 
   const COULD_NOT_CREATE_DATABASE_NUMBER = 601;
   const COULD_NOT_CREATE_DATABASE = 'Could not create database';
