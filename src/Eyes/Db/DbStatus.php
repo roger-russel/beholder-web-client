@@ -6,7 +6,7 @@ use BeholderWebClient\Eyes\Status;
 
 class DbStatus extends Status {
 
-  const NO_DRIVER = 'No Mysql driver found, it tried use PDO, mysqli and mysql, but neither are they found.';
+  const NO_DRIVER = 'No Mysql driver found, it tried use PDO, mysqli and mysql, but neither has been they found.';
   const NO_DRIVER_NUMBER = 500; // Because it was a system error
 
   const COULD_NOT_CONNECT_TO_SGBD = 'Could not connect to SGBD';
