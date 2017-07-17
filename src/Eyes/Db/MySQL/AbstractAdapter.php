@@ -14,7 +14,7 @@ Abstract class AbstractAdapter implements iAdapter {
   }
 
   public static function throwCouldNotConnect($message, $ex = null){
-    throw new Exception(Status::COULD_NOT_CONNECT_AT_SGBD . ' - ' . $message, Status::COULD_NOT_CONNECT_AT_SGBD_NUMBER, $ex);
+    throw new Exception(Status::COULD_NOT_CONNECT_TO_SGBD . ' - ' . $message, Status::COULD_NOT_CONNECT_TO_SGBD_NUMBER, $ex);
   }
 
   public static function throwQueryBadFormated(){

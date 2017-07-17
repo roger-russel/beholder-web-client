@@ -6,8 +6,8 @@ use BeholderWebClient\Eyes\Status;
 
 class DbStatus extends Status {
 
-  const COULD_NOT_CONNECT_AT_SGBD = 'Could not connect at SGBD';
-  const COULD_NOT_CONNECT_AT_SGBD_NUMBER = 600;
+  const COULD_NOT_CONNECT_TO_SGBD = 'Could not connect to SGBD';
+  const COULD_NOT_CONNECT_TO_SGBD_NUMBER = 600;
 
   const COULD_NOT_CREATE_DATABASE_NUMBER = 601;
   const COULD_NOT_CREATE_DATABASE = 'Could not create database';
