@@ -15,7 +15,7 @@ This beholder eyes keep an eye into APT system, APT is just a ficticius name.
 
 ## Example of use
 
-Fallow um example of how use it
+Follow an example of how to use it.
 
 <code>
 ...
