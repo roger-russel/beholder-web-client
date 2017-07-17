@@ -9,7 +9,7 @@ class NfsStatus extends Status {
   const REQUERIMENT_FAIL = 'REQUERIMENT FAIL: stat command not found with type -P stat';
   const REQUERIMENT_FAIL_NUMBER = 500; // It is 500 because it was a system problem
 
-  const PATH_NOT_EXIST = 'Path doesn\'t not exist: ';
+  const PATH_NOT_EXIST = 'Path doesn\'t exist: ';
   const PATH_NOT_EXIST_NUMBER = 600;
 
   const NOT_MOUNTED = 'NFS is not mounted on path: ';
