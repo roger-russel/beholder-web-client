@@ -9,6 +9,8 @@ services:
     volumes:
       - ./:/var/www
       - ./tests/acceptance/fixtures:/var/www/html
+      - ./tests/nfs/fixtures/mount:/mnt/read:ro
+      - ./tests/nfs/fixtures/mount:/mnt/write
 
 networks:
   default:

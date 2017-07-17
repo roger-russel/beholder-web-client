@@ -11,6 +11,9 @@ Class Observer implements iObserver {
 
   public function __construct($conf){
 
+    if(!isset($conf['timezone']))
+      $conf['timezone'] = false;
+
     $conf['timezone'] = $conf['timezone'] ? $conf['timezone'] : 'America/Sao_Paulo';
 
     date_default_timezone_set($conf['timezone']);
@@ -35,7 +38,7 @@ Class Observer implements iObserver {
 
     }
 
-    $this->writeJson();
+    $this->response['info']['runtime'] = $this->microtime_diff($this->start);
 
   }
 
@@ -66,14 +69,13 @@ Class Observer implements iObserver {
 
   }
 
-  protected function writeJson(){
-
+  public function writeJson(){
     header('Content-Type: application/json');
-
-    $this->response['info']['runtime'] = $this->microtime_diff($this->start);
-
     echo json_encode($this->response);
+  }
 
+  public function getResult(){
+    return $this->response;
   }
 
   protected function microtime_diff($start, $end = null) {
@@ -88,6 +90,6 @@ Class Observer implements iObserver {
   	$diff_usec = floatval($end_usec) - floatval($start_usec);
   	return floatval($diff_sec) + $diff_usec;
 
-}
+  }
 
 }
