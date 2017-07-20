@@ -5,26 +5,28 @@ namespace BeholderWebClient;
 Class Observer implements iObserver {
 
   protected $conf;
+
   protected $response;
   protected $env;
   protected $start;
 
+  protected $importance_alias;
+
+  const IMPORTANCE_ALIAS = 'importance';
+
   public function __construct($conf){
-
-    if(!isset($conf['timezone']))
-      $conf['timezone'] = false;
-
-    $conf['timezone'] = $conf['timezone'] ? $conf['timezone'] : 'America/Sao_Paulo';
-
-    date_default_timezone_set($conf['timezone']);
 
     $this->start = microtime();
 
     $this->conf = $conf;
+
+    $this->applaySettings();
+
     $this->response['info'] = [
       'startat' => date('Y-m-d H:i:s'),
       'runtime' => null
     ];
+
   }
 
   public function run(){
@@ -53,20 +55,49 @@ Class Observer implements iObserver {
 
       $return = [
         'status' => $eye->getStatusCode(),
-        'message' => $eye->getMessage()
+        'message' => $eye->getMessage(),
+        $this->importance_alias => $conf['importance']
       ];
 
-    } catch (Exception $e){
+    } catch (Exception $ex){
 
       $return = [
           'status' => 500,
-          'message' => $e->getMessage()
+          'message' => $ex->getMessage(),
+          $this->importance_alias => $conf['importance']
       ];
 
     }
 
     return $return;
 
+  }
+
+  protected fucntion applaySettings(){
+
+    if(!isset($this->conf['settings']))
+      $this->conf['settings'] = [];
+
+    $this->applyTimeZone();
+    $this->applyImportanceAlias();
+
+  }
+
+  protected function applyTimeZone(){
+
+    if(empty($this->conf['settings']['timezone']))
+      $this->conf['settings']['timezone'] =  'America/Sao_Paulo';
+
+    date_default_timezone_set($this->conf['settings']['timezone']);
+
+  }
+
+  protected function applyImportanceAlias(){
+    if(empty($this->conf['settings']['importance_alias'])){
+      $this->importance_alias = self::IMPORTANCE_ALIAS;
+    } else {
+      $this->importance_alias = $this->conf['settings']['importance_alias'];
+    }
   }
 
   public function writeJson(){
