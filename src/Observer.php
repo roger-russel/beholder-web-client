@@ -16,7 +16,7 @@ Class Observer implements iObserver {
   protected $timezone;
 
   const IMPORTANCE_ALIAS = 'importance';
-  const IMPORTANCE_DEFAULT = 'instability';
+  const IMPORTANCE_DEFAULT = 'regular';
   const TIMEZONE_DEFAULT = 'America/Sao_Paulo';
 
   public function __construct($conf){
