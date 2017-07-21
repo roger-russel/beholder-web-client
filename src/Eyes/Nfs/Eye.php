@@ -12,7 +12,7 @@ Class Eye extends AbstractNfs {
     $result = exec('type -P stat');
 
     if(!$result)
-      throw new Exception(Status::REQUERIMENT_FAIL, Status::REQUERIMENT_FAIL_NUMBER);
+      throw new Exception(Status::REQUERIMENT_FAIL, Status::INTERNAL_SERVER_ERROR_NUMBER);
 
   }
 
