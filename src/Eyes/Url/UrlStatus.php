@@ -11,7 +11,7 @@ class UrlStatus extends Status {
   const COULD_NOT_CONNECT = 'Could not connect to url: ';
   const COULD_NOT_CONNECT_NUMBER = 600;
 
-  const STATUS_CODE_WAS_NOT_EXPECTED = 'The status code returned was not the expected, received: ';
+  const STATUS_CODE_WAS_NOT_EXPECTED = 'The returned status code was not the expected, received: ';
   const STATUS_CODE_WAS_NOT_EXPECTED_NUMBER = 601;
 
   const METHOD_NOT_ALLOWED = 'Method is not allowed: ';

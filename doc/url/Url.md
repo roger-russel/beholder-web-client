@@ -1,12 +1,12 @@
 # Beholder Eye - URL
 
-This beholder eye keep an eye into an Url for you, it can be an API, an Image, or anything that should be accessible from http protocole.
+This beholder eye keep an eye into an Url for you. It can be an API an image or anything that should be accessible from http protocol.
 
 ## Dependencies
 
   * curl, php-curl
 
-## Exemple of use
+## Example of use
 
 <code>
 require 'vendor/autoload.php';
