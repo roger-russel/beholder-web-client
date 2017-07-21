@@ -11,8 +11,13 @@ Class Observer implements iObserver {
   protected $start;
 
   protected $importance_alias;
+  protected $importance_default;
+
+  protected $timezone;
 
   const IMPORTANCE_ALIAS = 'importance';
+  const IMPORTANCE_DEFAULT = 'instability';
+  const TIMEZONE_DEFAULT = 'America/Sao_Paulo';
 
   public function __construct($conf){
 
@@ -56,7 +61,7 @@ Class Observer implements iObserver {
       $return = [
         'status' => $eye->getStatusCode(),
         'message' => $eye->getMessage(),
-        $this->importance_alias => $conf['importance']
+        $this->importance_alias => empty($conf['importance'])? $this->importance_default : $conf['importance']
       ];
 
     } catch (Exception $ex){
@@ -64,7 +69,7 @@ Class Observer implements iObserver {
       $return = [
           'status' => 500,
           'message' => $ex->getMessage(),
-          $this->importance_alias => $conf['importance']
+          $this->importance_alias => empty($conf['importance'])? $this->importance_default : $conf['importance']
       ];
 
     }
@@ -80,15 +85,19 @@ Class Observer implements iObserver {
 
     $this->applyTimeZone();
     $this->applyImportanceAlias();
+    $this->applyImportanceDefault();
 
   }
 
   protected function applyTimeZone(){
 
-    if(empty($this->conf['settings']['timezone']))
-      $this->conf['settings']['timezone'] =  'America/Sao_Paulo';
+    if(empty($this->conf['settings']['timezone'])){
+      $this->timezone = self::TIMEZONE_DEFAULT;
+    } else {
+      $this->timezone = $this->conf['settings']['timezone'];
+    }
 
-    date_default_timezone_set($this->conf['settings']['timezone']);
+    date_default_timezone_set($this->timezone);
 
   }
 
@@ -97,6 +106,14 @@ Class Observer implements iObserver {
       $this->importance_alias = self::IMPORTANCE_ALIAS;
     } else {
       $this->importance_alias = $this->conf['settings']['importance_alias'];
+    }
+  }
+
+  protected function applyImportanceDefault(){
+    if(empty($this->conf['settings']['importance_default'])){
+      $this->importance_default = self::IMPORTANCE_DEFAULT;
+    } else {
+      $this->importance_default = $this->conf['settings']['importance_default'];
     }
   }
 
