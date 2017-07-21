@@ -2,6 +2,10 @@
 
 This beholder eye keep an eye into NFS, if it's mounted, if it's possible to read, to write and to delete files into it.
 
+## Dependencies
+
+  * linux "stat" command
+
 ## Exemple of use
 
 <code>

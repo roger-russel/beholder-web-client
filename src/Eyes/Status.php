@@ -22,6 +22,4 @@ class Status {
   const NOT_IMPLEMENTED = 'Not Implemented';
   const NOT_IMPLEMENTED_NUMBER = 501;
 
-  //numbers 6[0-9]{2} are reseverd to DBs usage;
-
 }
