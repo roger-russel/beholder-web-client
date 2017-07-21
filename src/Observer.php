@@ -20,7 +20,7 @@ Class Observer implements iObserver {
 
     $this->conf = $conf;
 
-    $this->applaySettings();
+    $this->applySettings();
 
     $this->response['info'] = [
       'startat' => date('Y-m-d H:i:s'),
@@ -73,7 +73,7 @@ Class Observer implements iObserver {
 
   }
 
-  protected fucntion applaySettings(){
+  protected fucntion applySettings(){
 
     if(!isset($this->conf['settings']))
       $this->conf['settings'] = [];
