@@ -73,7 +73,7 @@ Class Observer implements iObserver {
 
   }
 
-  protected fucntion applySettings(){
+  protected function applySettings(){
 
     if(!isset($this->conf['settings']))
       $this->conf['settings'] = [];
