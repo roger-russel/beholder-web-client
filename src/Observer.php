@@ -5,26 +5,33 @@ namespace BeholderWebClient;
 Class Observer implements iObserver {
 
   protected $conf;
+
   protected $response;
   protected $env;
   protected $start;
 
+  protected $importance_alias;
+  protected $importance_default;
+
+  protected $timezone;
+
+  const IMPORTANCE_ALIAS = 'importance';
+  const IMPORTANCE_DEFAULT = 'regular';
+  const TIMEZONE_DEFAULT = 'America/Sao_Paulo';
+
   public function __construct($conf){
-
-    if(!isset($conf['timezone']))
-      $conf['timezone'] = false;
-
-    $conf['timezone'] = $conf['timezone'] ? $conf['timezone'] : 'America/Sao_Paulo';
-
-    date_default_timezone_set($conf['timezone']);
 
     $this->start = microtime();
 
     $this->conf = $conf;
+
+    $this->applySettings();
+
     $this->response['info'] = [
       'startat' => date('Y-m-d H:i:s'),
       'runtime' => null
     ];
+
   }
 
   public function run(){
@@ -53,20 +60,61 @@ Class Observer implements iObserver {
 
       $return = [
         'status' => $eye->getStatusCode(),
-        'message' => $eye->getMessage()
+        'message' => $eye->getMessage(),
+        $this->importance_alias => empty($conf['importance'])? $this->importance_default : $conf['importance']
       ];
 
-    } catch (Exception $e){
+    } catch (Exception $ex){
 
       $return = [
           'status' => 500,
-          'message' => $e->getMessage()
+          'message' => $ex->getMessage(),
+          $this->importance_alias => empty($conf['importance'])? $this->importance_default : $conf['importance']
       ];
 
     }
 
     return $return;
 
+  }
+
+  protected function applySettings(){
+
+    if(!isset($this->conf['settings']))
+      $this->conf['settings'] = [];
+
+    $this->applyTimeZone();
+    $this->applyImportanceAlias();
+    $this->applyImportanceDefault();
+
+  }
+
+  protected function applyTimeZone(){
+
+    if(empty($this->conf['settings']['timezone'])){
+      $this->timezone = self::TIMEZONE_DEFAULT;
+    } else {
+      $this->timezone = $this->conf['settings']['timezone'];
+    }
+
+    date_default_timezone_set($this->timezone);
+
+  }
+
+  protected function applyImportanceAlias(){
+    if(empty($this->conf['settings']['importance_alias'])){
+      $this->importance_alias = self::IMPORTANCE_ALIAS;
+    } else {
+      $this->importance_alias = $this->conf['settings']['importance_alias'];
+    }
+  }
+
+  protected function applyImportanceDefault(){
+    if(empty($this->conf['settings']['importance_default'])){
+      $this->importance_default = self::IMPORTANCE_DEFAULT;
+    } else {
+      $this->importance_default = $this->conf['settings']['importance_default'];
+    }
   }
 
   public function writeJson(){

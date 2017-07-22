@@ -79,3 +79,19 @@ $ docker network create --driver bridge beholder-network
 
 $ docker-compose build
 $ docker-compose up
+
+3. Enter into container and run composer
+
+$ docker exec -it beholder-web-client bash
+$ composer install
+
+### Make Tests
+
+$ docker exec -it beholder-web-client bash
+$ codecept run
+
+You can run especific tests like
+
+$ codecept run nfs
+$ codecept run mysql # If you want run mysql test you must start the mysql container into tests/mysql/ firts.
+$ codecept run unit
