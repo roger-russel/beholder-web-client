@@ -9,7 +9,7 @@ Class Eye extends AbstractUrl {
 
   public function checkRequirement(){
 
-    if(!is_function('curl_init'))
+    if(!function_exists('curl_init'))
       throw new Exception(Status::REQUERIMENT_FAIL, Status::INTERNAL_SERVER_ERROR_NUMBER);
 
   }
@@ -17,18 +17,17 @@ Class Eye extends AbstractUrl {
   protected function testStatusCode() {
 
     $http_code = $this->response['response_info']['http_code'];
-    $expected = isset($this->conf['http_code']) ? (int) $this->conf['http_code'] : 200;
+    $expected = empty($this->conf['http_code']) ? self::DEFAULT_STATUS_CODE: (int) $this->conf['http_code'];
 
-    if ($http_code !== $expected) {
+    if ($http_code !== $expected)
       throw new Exception(Status::STATUS_CODE_WAS_NOT_EXPECTED  . $http_code . ' instead of ' . $expected, Status::STATUS_CODE_WAS_NOT_EXPECTED_NUMBER);
-    }
 
   }
 
-  protected function testConn) {
+  protected function testConn() {
 
     if (empty($this->response['response_header']))
-      throw new Exception(Status::COULD_NOT_CONNECT . this->conf['uri'], Status::COULD_NOT_CONNECT_NUMBER);
+      throw new Exception(Status::COULD_NOT_CONNECT . $this->conf['uri'], Status::COULD_NOT_CONNECT_NUMBER);
 
   }
 

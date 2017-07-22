@@ -12,6 +12,9 @@ abstract class AbstractUrl extends AbstractEye implements iUrl {
   protected $message;
   protected $response;
 
+  const DEFAULT_METHOD = 'GET';
+  const DEFAULT_STATUS_CODE = 200;
+
   abstract protected function testConn();
   abstract protected function testStatusCode();
 
@@ -30,7 +33,6 @@ abstract class AbstractUrl extends AbstractEye implements iUrl {
       $this->getUrl();
       $this->testConn();
       $this->testStatusCode();
-
       $this->code = Status::OK_NUMBER;
       $this->message = Status::OK;
 
@@ -47,10 +49,9 @@ abstract class AbstractUrl extends AbstractEye implements iUrl {
 
     $uri = $this->conf['uri'];
 
-    $method = strtoupper($this->conf['http']['method']);
+    $this->normalizeHttpConf();
 
-    if (empty($method))
-      $method = 'GET';
+    $method = strtoupper($this->conf['http']['method']);
 
     $cu = curl_init();
     curl_setopt($cu, CURLOPT_RETURNTRANSFER, TRUE);
@@ -88,7 +89,6 @@ abstract class AbstractUrl extends AbstractEye implements iUrl {
     curl_setopt($cu, CURLOPT_SSL_VERIFYHOST, false);
     curl_setopt($cu, CURLINFO_HEADER_OUT, true);
 
-
     $response = curl_exec($cu);
     $response_info = curl_getinfo($cu);
     $request_sent = curl_getinfo($cu, CURLINFO_HEADER_OUT);
@@ -103,15 +103,30 @@ abstract class AbstractUrl extends AbstractEye implements iUrl {
     ];
   }
 
-  private function makeHeader($header) {
+  protected function normalizeHttpConf(){
 
-    if(!is_array($header))
-      $header = [];
+    if(empty($this->conf['http']))
+      $this->conf['http'] = [];
+
+    if(empty($this->conf['http']['method']))
+      $this->conf['http']['method'] = self::DEFAULT_METHOD;
+
+    if(empty($this->conf['http']['header']))
+      $this->conf['http']['header'] = [];
+
+    if(empty($this->conf['http']['data']))
+      $this->conf['http']['data'] = [];
+
+  }
+
+  private function makeHeader($header) {
 
     $arrHeader = [];
 
-    foreach ($header as $name => $val) {
-      $arrHeader[] = "{$name}: {$val}";
+    if(is_array($header)){
+      foreach ($header as $name => $val) {
+        $arrHeader[] = "{$name}: {$val}";
+      }
     }
 
     return $arrHeader;
