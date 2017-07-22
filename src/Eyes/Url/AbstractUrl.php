@@ -60,7 +60,7 @@ abstract class AbstractUrl extends AbstractEye implements iUrl {
 
       case 'DELETE':
         curl_setopt($cu, CURLOPT_CUSTOMREQUEST, 'DELETE');
-        curl_setopt($cu, CURLOPT_POSTFIELDS, http_build_query($this->conf['http']['data']));
+        curl_setopt($cu, CURLOPT_POSTFIELDS, $this->conf['http']['data']);
         break;
 
       case 'POST':
