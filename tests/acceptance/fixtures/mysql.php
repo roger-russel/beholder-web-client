@@ -1,7 +1,6 @@
 <?php
 
-define('ROOT', '/var/www');
-require ROOT . '/vendor/autoload.php';
+require __DIR__ . '/bootstrap.php';
 
 $conf = [
   'eyes' => [
@@ -20,3 +19,4 @@ $conf = [
 
 $beholder = new BeholderWebClient\Observer($conf);
 $beholder->run();
+$beholder->writeJson();
