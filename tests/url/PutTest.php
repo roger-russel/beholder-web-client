@@ -51,7 +51,7 @@ class PutTest extends \Codeception\Test\Unit
 
       $this->assertArrayHasKey($eyeName, $result);
       $message = substr($result[$eyeName]['message'],0,strlen(Status::STATUS_CODE_WAS_NOT_EXPECTED));
-      $this->assertEquals(Status::STATUS_CODE_WAS_NOT_EXPECTED_NUMBER, $result[$eyeName]['status'], 'Status should be ' . Status::STATUS_CODE_WAS_NOT_EXPECTED_NUMBER);
+      $this->assertEquals(Status::STATUS_CODE_WAS_NOT_EXPECTED_NUMBER, $result[$eyeName]['status'], 'Status code should be ' . Status::STATUS_CODE_WAS_NOT_EXPECTED_NUMBER);
       $this->assertEquals(Status::STATUS_CODE_WAS_NOT_EXPECTED, $message, 'Message should be ' . Status::STATUS_CODE_WAS_NOT_EXPECTED);
 
     }
@@ -80,7 +80,7 @@ class PutTest extends \Codeception\Test\Unit
       $result = $beholder->getResult();
 
       $this->assertArrayHasKey($eyeName, $result);
-      $this->assertEquals(Status::OK_NUMBER, $result[$eyeName]['status'], 'Status should be ' . Status::OK_NUMBER);
+      $this->assertEquals(Status::OK_NUMBER, $result[$eyeName]['status'], 'Status code should be ' . Status::OK_NUMBER);
       $this->assertEquals(Status::OK, $result[$eyeName]['message'], 'Message should be ' . Status::OK);
 
     }
@@ -116,7 +116,7 @@ class PutTest extends \Codeception\Test\Unit
       $result = $beholder->getResult();
 
       $this->assertArrayHasKey($eyeName, $result);
-      $this->assertEquals(Status::OK_NUMBER, $result[$eyeName]['status'], 'Status should be ' . Status::OK_NUMBER);
+      $this->assertEquals(Status::OK_NUMBER, $result[$eyeName]['status'], 'Status code should be ' . Status::OK_NUMBER);
       $this->assertEquals(Status::OK, $result[$eyeName]['message'], 'Message should be ' . Status::OK);
 
     }
@@ -150,7 +150,7 @@ class PutTest extends \Codeception\Test\Unit
 
       $this->assertArrayHasKey($eyeName, $result);
       $message = substr($result[$eyeName]['message'],0,strlen(Status::STATUS_CODE_WAS_NOT_EXPECTED));
-      $this->assertEquals(Status::STATUS_CODE_WAS_NOT_EXPECTED_NUMBER, $result[$eyeName]['status'], 'Status should be ' . Status::STATUS_CODE_WAS_NOT_EXPECTED_NUMBER);
+      $this->assertEquals(Status::STATUS_CODE_WAS_NOT_EXPECTED_NUMBER, $result[$eyeName]['status'], 'Status code should be ' . Status::STATUS_CODE_WAS_NOT_EXPECTED_NUMBER);
       $this->assertEquals(Status::STATUS_CODE_WAS_NOT_EXPECTED, $message, 'Message should be ' . Status::STATUS_CODE_WAS_NOT_EXPECTED);
 
     }

@@ -45,7 +45,7 @@ class UrlTest extends \Codeception\Test\Unit
 
       $this->assertArrayHasKey($eyeName, $result);
       $this->assertEquals(Status::OK, $result[$eyeName]['message'], 'Message should be ' . Status::OK);
-      $this->assertEquals(Status::OK_NUMBER, $result[$eyeName]['status'], 'Status should be ' . Status::OK_NUMBER);
+      $this->assertEquals(Status::OK_NUMBER, $result[$eyeName]['status'], 'Status code should be ' . Status::OK_NUMBER);
 
 
     }
@@ -75,7 +75,7 @@ class UrlTest extends \Codeception\Test\Unit
       $message = substr($result[$eyeName]['message'],0,strlen(Status::COULD_NOT_CONNECT));
 
       $this->assertEquals(Status::COULD_NOT_CONNECT, $message, 'Message should be ' . Status::COULD_NOT_CONNECT);
-      $this->assertEquals(Status::COULD_NOT_CONNECT_NUMBER, $result[$eyeName]['status'], 'Status should be ' . Status::COULD_NOT_CONNECT_NUMBER);
+      $this->assertEquals(Status::COULD_NOT_CONNECT_NUMBER, $result[$eyeName]['status'], 'Status code should be ' . Status::COULD_NOT_CONNECT_NUMBER);
 
 
     }
@@ -104,7 +104,7 @@ class UrlTest extends \Codeception\Test\Unit
 
       $this->assertArrayHasKey($eyeName, $result);
       $this->assertEquals(Status::OK, $result[$eyeName]['message'], 'Message should be ' . Status::OK);
-      $this->assertEquals(Status::OK_NUMBER, $result[$eyeName]['status'], 'Status should be ' . Status::OK_NUMBER);
+      $this->assertEquals(Status::OK_NUMBER, $result[$eyeName]['status'], 'Status code should be ' . Status::OK_NUMBER);
 
     }
 
@@ -134,7 +134,7 @@ class UrlTest extends \Codeception\Test\Unit
 
       $this->assertArrayHasKey($eyeName, $result);
       $this->assertEquals(Status::STATUS_CODE_WAS_NOT_EXPECTED, $message, 'Message should be ' . Status::STATUS_CODE_WAS_NOT_EXPECTED);
-      $this->assertEquals(Status::STATUS_CODE_WAS_NOT_EXPECTED_NUMBER, $result[$eyeName]['status'], 'Status should be ' . Status::STATUS_CODE_WAS_NOT_EXPECTED_NUMBER);
+      $this->assertEquals(Status::STATUS_CODE_WAS_NOT_EXPECTED_NUMBER, $result[$eyeName]['status'], 'Status code should be ' . Status::STATUS_CODE_WAS_NOT_EXPECTED_NUMBER);
 
     }
 
@@ -164,7 +164,7 @@ class UrlTest extends \Codeception\Test\Unit
 
       $this->assertArrayHasKey($eyeName, $result);
       $this->assertEquals(Status::METHOD_NOT_ALLOWED, $message, 'Message should be ' . Status::METHOD_NOT_ALLOWED);
-      $this->assertEquals(Status::METHOD_NOT_ALLOWED_NUMBER, $result[$eyeName]['status'], 'Status should be ' . Status::METHOD_NOT_ALLOWED_NUMBER);
+      $this->assertEquals(Status::METHOD_NOT_ALLOWED_NUMBER, $result[$eyeName]['status'], 'Status code should be ' . Status::METHOD_NOT_ALLOWED_NUMBER);
 
     }
 
