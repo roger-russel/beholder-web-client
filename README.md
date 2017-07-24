@@ -6,6 +6,8 @@ Beholder is a simple php monitoring system, this client is made to serve a json 
 
 This client can be used with Zabbix and others tools, just setup those to read the json file which this client give.
 
+
+
 ## Dependencies
 
 * PHP:5.6, why? For compatibility.
@@ -116,3 +118,8 @@ You can run especific tests like the following:
 If you want to run a mysql test, first you need to start the docker mysql container inside tests/mysql/ folder. Then run the following command:
 
 > `$ codecept run mysql `
+
+# License
+
+Apache 2.0
+Copyright 2017 Roger Russel, and Alan Yoshida
