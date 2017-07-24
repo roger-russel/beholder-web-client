@@ -34,7 +34,7 @@ In your composer.json file put the *repositories* and *require* like this:
 
 Then run:
 
-`$ composer install;`
+> `$ composer install;`
 
 ### How to use
 
@@ -67,31 +67,52 @@ $beholder->run();
 
 ## How to Contribute
 
-### Steps
+Contribute is easy. Make a fork and start to code, then do a pull request.
+
+You can contribute not just in code, you can make a bug report, a issue asking for a feature or simply giving your suggestion.
+
+
+### How to run locally
 
 With docker is easy and fun!
 
-1. Create a docker network
+* Create a docker network
 
-$ docker network create --driver bridge beholder-network
+> `$ docker network create --driver bridge beholder-network`
 
-2. Build the project and run the project
+* Build the project and run the container
 
-$ docker-compose build
-$ docker-compose up
+> `$ docker-compose build`
 
-3. Enter into container and run composer
+> `$ docker-compose up`
 
-$ docker exec -it beholder-web-client bash
-$ composer install
+* Enter the container and run composer to install the dependencies
 
-### Make Tests
+> `$ docker exec -it beholder-web-client bash`
 
-$ docker exec -it beholder-web-client bash
-$ codecept run
+> `$ composer install`
 
-You can run especific tests like
+Or the one liner command:
 
-$ codecept run nfs
-$ codecept run mysql # If you want run mysql test you must start the mysql container into tests/mysql/ firts.
-$ codecept run unit
+> `$ docker exec -it beholder-web-client composer install`
+
+### To run the codeception tests
+With the docker container running do the following:
+
+> `$ docker exec -it beholder-web-client bash`
+
+> `$ codecept run`
+
+Or the one liner command:
+
+> `$ docker exec -it beholder-web-client codecept run`
+
+You can run especific tests like the following:
+
+> `$ codecept run nfs`
+
+> `$ codecept run unit`
+
+If you want to run a mysql test, first you need to start the docker mysql container inside tests/mysql/ folder. Then run the following command:
+
+> `$ codecept run mysql `
