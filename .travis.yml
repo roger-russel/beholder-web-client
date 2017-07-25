@@ -4,9 +4,10 @@ services: docker
 php: 5.6
 before_script:
   - docker network create beholder-network
+  - docker-compose build
   - docker-compose up -d
 script:
-  - codecept run nfs
+  - docker exec -it beholder-web-client bash -c 'codecept run nfs'
 cache:
   directories:
   - vendor
