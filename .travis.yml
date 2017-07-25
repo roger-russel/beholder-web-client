@@ -3,6 +3,7 @@ sudo: required
 services: docker
 php: 5.6
 before_script:
+  - docker network create beholder-network
   - docker-compose up
 script:
   - codecept run nfs
