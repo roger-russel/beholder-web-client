@@ -6,7 +6,6 @@ before_script:
   - docker network create beholder-network
   - docker-compose build
   - docker-compose up -d
-  - docker-compose -f test/mysql/docker-compose.yml build
   - docker-compose -f test/mysql/docker-compose.yml up -d
   - composer install
 script:
