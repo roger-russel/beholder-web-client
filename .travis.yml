@@ -6,7 +6,7 @@ before_script:
   - docker network create beholder-network
   - docker-compose build
   - docker-compose up -d
-  - docker-compose -f test/mysql/docker-compose.yml up -d
+  - docker-compose -f tests/mysql/docker-compose.yml up -d
   - composer install
 script:
   - docker exec -it beholder-web-client bash -c 'vendor/bin/codecept run || exit $?'
