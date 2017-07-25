@@ -7,7 +7,4 @@ before_script:
   - docker-compose build
   - docker-compose up -d
 script:
-  - docker exec -it beholder-web-client bash -c 'codecept run nfs'
-cache:
-  directories:
-  - vendor
+  - docker exec -it beholder-web-client bash -c 'vendor/bin/codecept run nfs'
