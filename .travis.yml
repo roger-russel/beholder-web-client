@@ -8,4 +8,4 @@ before_script:
   - docker-compose up -d
   - composer install
 script:
-  - docker exec -it beholder-web-client bash -c 'vendor/bin/codecept run nfs'
+  - docker exec -it beholder-web-client bash -c 'vendor/bin/codecept run nfs; exit $?'
