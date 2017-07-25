@@ -6,6 +6,6 @@ before_script:
   - docker network create beholder-network
   - docker-compose build
   - docker-compose up -d
-  - docker exec -it beholder-web-client bash -c 'composer install'
+  - composer install
 script:
   - docker exec -it beholder-web-client bash -c 'vendor/bin/codecept run nfs'
