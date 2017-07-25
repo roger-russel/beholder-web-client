@@ -1,7 +1,11 @@
 language: php
-php:
-    - 5.6
+sudo: required
+services: docker
+php: 5.6
 before_script:
   - docker-compose up
 script:
   - codecept run nfs
+cache:
+  directories:
+  - vendor
