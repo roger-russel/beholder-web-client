@@ -8,7 +8,6 @@ services:
       - 8069:80
     volumes:
       - ./:/var/www
-      - ./tests/acceptance/fixtures:/var/www/html
       - ./tests/nfs/fixtures/mount:/mnt/read:ro
       - ./tests/nfs/fixtures/mount:/mnt/write
 
