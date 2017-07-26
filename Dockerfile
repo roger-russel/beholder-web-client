@@ -1,4 +1,4 @@
-FROM php:5.6-apache
+FROM php:5.6
 MAINTAINER Roger Russel <rrussel@allin.com.br>
 
 ENV TERM=xterm
@@ -24,3 +24,5 @@ RUN docker-php-ext-install \
   pdo \
   pdo_mysql \
   mysqli
+
+CMD ["php", "-S", "localhost:80", "-t", "tests/acceptance/fixtures"]
