@@ -1,5 +1,6 @@
 # Beholder Monitor - Php Web Client
 
+![Travis:Master](https://travis-ci.org/RogerRussel/beholder-web-client.svg?branch=master "Travis Master")
 ![Try Beholder](https://raw.githubusercontent.com/RogerRussel/beholder-web-client/master/opt/img/beholder.jpg)
 
 Beholder is a simple php monitoring system, this client is made to serve a json response with the current stats of what is been monitored.
