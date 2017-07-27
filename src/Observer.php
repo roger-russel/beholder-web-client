@@ -6,7 +6,12 @@ Class Observer implements iObserver {
 
   protected $conf;
 
-  protected $response;
+  protected $response = [
+    'info' => [
+      'startat' => null,
+      'runtime' => null
+    ]
+  ];
   protected $env;
   protected $start;
 
@@ -20,19 +25,16 @@ Class Observer implements iObserver {
   const TIMEZONE_DEFAULT = 'America/Sao_Paulo';
 
   public function __construct(){
-
     $this->start = microtime();
-
-    $this->response['info'] = [
-      'startat' => date('Y-m-d H:i:s'),
-      'runtime' => null
-    ];
-
   }
 
   public function setConf($conf){
     $this->conf = $conf;
+
     $this->applySettings();
+
+    $this->response['info']['startat'] = date('Y-m-d H:i:s');
+
   }
 
   public function run(){
