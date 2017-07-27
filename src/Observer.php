@@ -37,6 +37,19 @@ Class Observer implements iObserver {
 
   }
 
+  public function useFileConf($file){
+
+    switch ( pathinfo($file, PATHINFO_EXTENSION) ) {
+      case 'yaml':
+      case 'yml':
+        $this->setConf(yaml_parse_file($file));
+        break;
+      case 'php';
+        $this->setConf(require $file);
+        break;
+    }
+  }
+
   public function run(){
 
     foreach($this->conf['eyes'] as $name => $conf ) {
