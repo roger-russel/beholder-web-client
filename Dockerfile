@@ -12,8 +12,11 @@ RUN apt-get update && apt-get install -y \
   git \
   zip \
   unzip \
+  libyaml-dev \
   build-essential \
   && rm -rf /var/lib/apt/lists/*
+
+RUN pecl install yaml
 
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 RUN php composer-setup.php --install-dir=/usr/local/bin --filename=composer

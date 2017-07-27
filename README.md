@@ -7,12 +7,11 @@ Beholder is a simple php monitoring system, this client is made to serve a json 
 
 This client can be used with Zabbix and others tools, just setup those to read the json file which this client give.
 
-
-
 ## Dependencies
 
 * PHP:5.6, why? For compatibility.
 * Composer
+* Lib Yaml, required only if you use it. See more here. [here](doc/YAML.md).
 
 Some modules could have more dependencies, please look at src/Eyes/ModuleName/Readme.md too.
 

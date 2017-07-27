@@ -18,4 +18,8 @@ class HelperObserver  extends Observer {
     return $this->timezone;
   }
 
+  public function getConf(){
+    return $this->conf;
+  }
+
 }

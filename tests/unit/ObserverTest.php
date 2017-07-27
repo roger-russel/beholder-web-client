@@ -24,7 +24,8 @@ class ObserverTest extends \Codeception\Test\Unit
 
         $conf = [];
 
-        $beholder = new HelperObserver($conf);
+        $beholder = new HelperObserver();
+        $beholder->setConf($conf);
 
         $this->assertEquals($beholder->getImportanceDefault(),HelperObserver::IMPORTANCE_DEFAULT);
         $this->assertEquals($beholder->getImportanceAlias(), HelperObserver::IMPORTANCE_ALIAS);
@@ -46,7 +47,8 @@ class ObserverTest extends \Codeception\Test\Unit
         ]
       ];
 
-      $beholder = new HelperObserver($conf);
+      $beholder = new HelperObserver();
+      $beholder->setConf($conf);
 
       $this->assertNotEquals($beholder->getImportanceDefault(),HelperObserver::IMPORTANCE_DEFAULT);
       $this->assertNotEquals($beholder->getImportanceAlias(), HelperObserver::IMPORTANCE_ALIAS);
@@ -79,8 +81,8 @@ class ObserverTest extends \Codeception\Test\Unit
 
       ];
 
-      $beholder = new HelperObserver($conf);
-
+      $beholder = new HelperObserver();
+      $beholder->setConf($conf);
       $beholder->run();
       $result = $beholder->getResult();
       $this->assertEquals($result[$eyeName]['importance'], $importance);
@@ -105,7 +107,8 @@ class ObserverTest extends \Codeception\Test\Unit
 
       ];
 
-      $beholder = new HelperObserver($conf);
+      $beholder = new HelperObserver();
+      $beholder->setConf($conf);
 
       $beholder->run();
       $result = $beholder->getResult();

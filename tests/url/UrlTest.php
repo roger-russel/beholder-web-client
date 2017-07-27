@@ -38,7 +38,8 @@ class UrlTest extends \Codeception\Test\Unit
         ]
       ];
 
-      $beholder = new BeholderWebClient\Observer($conf);
+      $beholder = new BeholderWebClient\Observer();
+      $beholder->setConf($conf);
       $beholder->run();
 
       $result = $beholder->getResult();
@@ -65,7 +66,8 @@ class UrlTest extends \Codeception\Test\Unit
         ]
       ];
 
-      $beholder = new BeholderWebClient\Observer($conf);
+      $beholder = new BeholderWebClient\Observer();
+      $beholder->setConf($conf);
       $beholder->run();
 
       $result = $beholder->getResult();
@@ -97,7 +99,8 @@ class UrlTest extends \Codeception\Test\Unit
         ]
       ];
 
-      $beholder = new BeholderWebClient\Observer($conf);
+      $beholder = new BeholderWebClient\Observer();
+      $beholder->setConf($conf);
       $beholder->run();
 
       $result = $beholder->getResult();
@@ -125,7 +128,8 @@ class UrlTest extends \Codeception\Test\Unit
         ]
       ];
 
-      $beholder = new BeholderWebClient\Observer($conf);
+      $beholder = new BeholderWebClient\Observer();
+      $beholder->setConf($conf);
       $beholder->run();
 
       $result = $beholder->getResult();
@@ -156,7 +160,8 @@ class UrlTest extends \Codeception\Test\Unit
         ]
       ];
 
-      $beholder = new BeholderWebClient\Observer($conf);
+      $beholder = new BeholderWebClient\Observer();
+      $beholder->setConf($conf);
       $beholder->run();
       $result = $beholder->getResult();
 

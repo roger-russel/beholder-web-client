@@ -37,7 +37,8 @@ class MountedTest extends \Codeception\Test\Unit
         ]
       ];
 
-      $beholder = new BeholderWebClient\Observer($conf);
+      $beholder = new BeholderWebClient\Observer();
+      $beholder->setConf($conf);
       $beholder->run();
 
       $result = $beholder->getResult();
@@ -66,7 +67,8 @@ class MountedTest extends \Codeception\Test\Unit
         ]
       ];
 
-      $beholder = new BeholderWebClient\Observer($conf);
+      $beholder = new BeholderWebClient\Observer();
+      $beholder->setConf($conf);
       $beholder->run();
 
       $result = $beholder->getResult();
@@ -98,7 +100,8 @@ class MountedTest extends \Codeception\Test\Unit
 
       try {
 
-        $beholder = new BeholderWebClient\Observer($conf);
+        $beholder = new BeholderWebClient\Observer();
+        $beholder->setConf($conf);
         $beholder->run();
 
         $result = $beholder->getResult();
@@ -113,3 +116,4 @@ class MountedTest extends \Codeception\Test\Unit
     }
 
 }
+$beholder = new BeholderWebClient\Observer(); $beholder->setConf($conf);$beholder = new BeholderWebClient\Observer(); $beholder->setConf($conf);

@@ -7,6 +7,7 @@ services:
     ports:
       - 8069:80
     volumes:
+      - ./opt/php/php.ini:/usr/local/etc/php/php.ini:ro
       - ./:/var/www
       - ./tests/nfs/fixtures/mount:/mnt/read:ro
       - ./tests/nfs/fixtures/mount:/mnt/write
