@@ -19,19 +19,20 @@ Class Observer implements iObserver {
   const IMPORTANCE_DEFAULT = 'regular';
   const TIMEZONE_DEFAULT = 'America/Sao_Paulo';
 
-  public function __construct($conf){
+  public function __construct(){
 
     $this->start = microtime();
-
-    $this->conf = $conf;
-
-    $this->applySettings();
 
     $this->response['info'] = [
       'startat' => date('Y-m-d H:i:s'),
       'runtime' => null
     ];
 
+  }
+
+  public function setConf($conf){
+    $this->conf = $conf;
+    $this->applySettings();
   }
 
   public function run(){
