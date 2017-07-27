@@ -1,6 +1,6 @@
 # Php - Configuration file
 
-It's possible setup a conf file, which can be a PHP file or an Yml file, you can see more about Yml conf file at [here](YAML.md).
+It's possible to setup a configuration file, which can be a PHP file or an Yml file. You can see more about Yml conf file [here](YAML.md).
 
 ## Example
 
@@ -23,7 +23,7 @@ return [
 
 ```
 
-2. Set to use the path to it
+2. Set to use the path to the php file
 
 ```
 <php

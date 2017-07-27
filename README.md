@@ -11,7 +11,7 @@ This client can be used with Zabbix and others tools, just setup those to read t
 
 * PHP:5.6, why? For compatibility.
 * Composer
-* Yaml, only if will be used see more [here](doc/YAML.md).
+* Lib Yaml, required only if you use it. See more here. [here](doc/YAML.md).
 
 Some modules could have more dependencies, please look at src/Eyes/ModuleName/Readme.md too.
 

@@ -1,7 +1,8 @@
 # Yaml - Configuration file
 
-To use read from Yaml file option it must has be installed.
-It it was not and, for some reason you don't want or don't can install it, you still can make it at regular php file, see more [here](./PHP.md).
+To use the Yaml conf file option it must to be installed.
+
+If it was not installed or for some other reason you don't want it or can't install it, you still can make a regular php configuration file, see more [here](./PHP.md).
 
 ## Dependencies
 
@@ -9,7 +10,7 @@ It it was not and, for some reason you don't want or don't can install it, you s
 
 ### How install libyaml-dev
 
- It work into my docker container, which was with debian image.
+ It work into the docker container, which is an debian image.
 
  >`# apt-get install libyaml-dev -y`
  >`# pecl install yaml`
@@ -18,7 +19,7 @@ It it was not and, for some reason you don't want or don't can install it, you s
 
  `extension=yaml.so`
 
- I supose where you are using PHP will need be restarted.
+ I suppose you will need to restart your PHP service.
 
 
 ## Example
@@ -34,7 +35,7 @@ eyes:
       method: get
 ```
 
-2. Set to use the path to it
+2. Set to use the path to the yml file
 
 ```
 <php
