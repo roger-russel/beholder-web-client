@@ -26,7 +26,7 @@ Class Eye extends AbstractDomain {
   protected function checkStatusCode() {
 
     $m = [];
-    $r = preg_match('/^status: (.*?)$/', $this->domainInfo ,$m);
+    $r = preg_match('/^status:[\s\t]+(.*?)$/m', $this->domainInfo ,$m);
 
     if($r === 0){
 
@@ -52,7 +52,16 @@ Class Eye extends AbstractDomain {
 
   protected function checkExpireDate() {
 
+    $m = [];
+    $r = preg_match('/^expires:[\s\t]+([\d]+)$/m', $this->domainInfo ,$m);
 
+    if($r === 0)
+      throw new Exception(Status::UNKNOW_EXPIRE_DATE, Status::NOT_IMPLEMENTED_NUMBER);
+
+    $date = $m[1];
+
+    if ( strtotime($date . ' -' . $this->conf['expire']. ' days') < $this->now )
+      throw new Exception(Status::CLOSE_TO_EXPIRE, Status::CLOSE_TO_EXPIRE_NUMBER);
 
   }
 }

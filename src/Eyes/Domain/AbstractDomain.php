@@ -11,12 +11,18 @@ abstract class AbstractDomain extends AbstractEye implements iDomain {
   protected $code;
   protected $message;
   protected $domainInfo;
+  protected $now;
 
   const DEFAULT_STATUS = 'published';
 
   abstract protected function checkStatusCode();
   abstract protected function checkExpireDate();
   abstract protected function getDomainInfo();
+
+  public function __construct($conf){
+    parent::__construct($conf);
+    $this->now = strtotime('now'); // This make test possible
+  }
 
   public function getStatusCode(){
     return $this->code;
@@ -34,7 +40,7 @@ abstract class AbstractDomain extends AbstractEye implements iDomain {
 
       $this->checkStatusCode();
 
-      if(!empty($this->conf['expire']) and $this->conf['expire'] !== false)
+      if(!empty($this->conf['expire']) and $this->conf['expire'] > 0)
         $this->checkExpireDate();
 
       $this->code = Status::OK_NUMBER;
