@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y \
   zip \
   unzip \
   libyaml-dev \
+  libpq-dev \
   build-essential \
   && rm -rf /var/lib/apt/lists/*
 
@@ -22,11 +23,14 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 RUN php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 RUN php -r "unlink('composer-setup.php');"
 
+RUN docker-php-ext-configure \
+  pgsql -with-pgsql=/usr/local/pgsql
+
 # Install PHP Modules
 RUN docker-php-ext-install \
   pdo \
   pdo_mysql \
   mysqli \
-  pdo_pgsql 
+  pdo_pgsql
 
 CMD ["php", "-S", "localhost:80", "-t", "tests/acceptance/fixtures"]
