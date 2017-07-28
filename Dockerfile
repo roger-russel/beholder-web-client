@@ -26,6 +26,7 @@ RUN php -r "unlink('composer-setup.php');"
 RUN docker-php-ext-install \
   pdo \
   pdo_mysql \
-  mysqli
+  mysqli \
+  pdo_pgsql 
 
 CMD ["php", "-S", "localhost:80", "-t", "tests/acceptance/fixtures"]
