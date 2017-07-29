@@ -4,7 +4,7 @@ namespace BeholderWebClient\Eyes\Db\PostgreSQL;
 
 use PDO as PHPDO;
 use Exception;
-use BeholderWebClient\Eyes\Db\DbStatus as Status;
+use BeholderWebClient\Eyes\Db\PostgreSQL\PostgreSQLStatus as Status;
 use BeholderWebClient\Eyes\Db\AbstractAdapter;
 
 class Pdo  extends AbstractAdapter {
@@ -35,26 +35,26 @@ class Pdo  extends AbstractAdapter {
 
   public function testQuery(){
 
-      if(isset($this->conf['query']['create']))
+      if(!empty($this->conf['query']['create']))
         $this->execCreatequery('create');
 
-      if(isset($this->conf['query']['insert']))
+      if(!empty($this->conf['query']['insert']))
         $this->execQuery('insert', Status::QUERY_INSERT_FAIL_NUMBER, Status::QUERY_INSERT_FAIL);
 
-      if(isset($this->conf['query']['update']))
+      if(!empty($this->conf['query']['update']))
         $this->execQuery('update', Status::QUERY_UPDATE_FAIL_NUMBER, Status::QUERY_UPDATE_FAIL);
 
-      if(isset($this->conf['query']['select']))
+      if(!empty($this->conf['query']['select']))
         $this->selectquery();
 
-      if(isset($this->conf['query']['delete']))
+      if(!empty($this->conf['query']['delete']))
         $this->execQuery('delete', Status::QUERY_DELETE_FAIL_NUMBER, Status::QUERY_DELETE_FAIL);
 
-      if(isset($this->conf['query']['drop']))
+      if(!empty($this->conf['query']['drop']))
         $this->execDropquery('drop');
 
       if(!$this->ran)
-        parent::throwQueryBadFormated();
+        parent::throwBadFormatedQuery();
 
   }
 

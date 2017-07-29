@@ -6,9 +6,6 @@ use BeholderWebClient\Eyes\Status;
 
 class DbStatus extends Status {
 
-  const NO_DRIVER = 'No Mysql driver found, it tried use PDO, mysqli and mysql, but neither of them has been found.';
-  const NO_DRIVER_NUMBER = 500; // Because it was a system error
-
   const COULD_NOT_CONNECT_TO_SGBD = 'Could not connect to SGBD';
   const COULD_NOT_CONNECT_TO_SGBD_NUMBER = 600;
 
@@ -30,16 +27,18 @@ class DbStatus extends Status {
   const COULD_NOT_DROP_TABLE_NUMBER = 606;
   const COULD_NOT_DROP_TABLE = 'Could not drop table';
 
-  const QUERY_SELECT_FAIL_NUMBER = 610;
+  const QUERY_SELECT_FAIL_NUMBER = 607;
   const QUERY_SELECT_FAIL = 'Query select fail';
 
-  const QUERY_INSERT_FAIL_NUMBER = 620;
+  const QUERY_INSERT_FAIL_NUMBER = 608;
   const QUERY_INSERT_FAIL = 'Query insert fail';
 
-  const QUERY_UPDATE_FAIL_NUMBER = 630;
+  const QUERY_UPDATE_FAIL_NUMBER = 609;
   const QUERY_UPDATE_FAIL = 'Query update fail';
 
-  const QUERY_DELETE_FAIL_NUMBER = 640;
+  const QUERY_DELETE_FAIL_NUMBER = 610;
   const QUERY_DELETE_FAIL = 'Query delte fail';
+
+  const BAD_FORMATED_QUERY = 'Query field was not correcly formated';
 
 }

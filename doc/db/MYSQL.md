@@ -17,7 +17,7 @@ $conf = [
         'password' => 'initial1234',
 //      'port' => 3306, // If not set it will use the default port 3306
         'dbname' => 'beholder_test',
-        'querys' => [ //Query which will run on test, it will execute into this order CREATE, INSERT, UPDATE, SELECT and DROP.
+        'query' => [ //Query which will run on test, it will execute into this order CREATE, INSERT, UPDATE, SELECT and DROP.
           'select' => 'select name from user limit 1'
         ]
       ]

@@ -3,7 +3,7 @@
 namespace BeholderWebClient\Eyes\Db\PostgreSQL;
 
 use Exception;
-use BeholderWebClient\Eyes\Db\DbStatus as Status;
+use BeholderWebClient\Eyes\Db\PostgreSQL\PostgreSQLStatus as Status;
 use BeholderWebClient\Eyes\Db\AbstractDb;
 
 Class Eye extends AbstractDb {
@@ -26,16 +26,7 @@ Class Eye extends AbstractDb {
   }
 
   public function testConn(){
-
-    try {
-
-      $this->adapter->testConn();
-
-    } catch(Exception $ex) {
-      $this->code = $ex->getCode();
-      $this->message = $ex->getMessage();
-    }
-
+    $this->adapter->testConn();
   }
 
   public function testQuery(){

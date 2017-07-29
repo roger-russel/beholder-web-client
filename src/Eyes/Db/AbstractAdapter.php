@@ -17,8 +17,8 @@ Abstract class AbstractAdapter implements iAdapter {
     throw new Exception(Status::COULD_NOT_CONNECT_TO_SGBD . ' - ' . $message, Status::COULD_NOT_CONNECT_TO_SGBD_NUMBER, $ex);
   }
 
-  public static function throwQueryBadFormated(){
-    throw new Exception(Status::EXPECTATION_FAILED . ' - bad formated query', Status::EXPECTATION_FAILED_NUMBER);
+  public static function throwBadFormatedQuery(){
+    throw new Exception(Status::BAD_FORMATED_QUERY, Status::EXPECTATION_FAILED_NUMBER);
   }
 
   public function getMergedArrayQuery($arr){

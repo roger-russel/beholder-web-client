@@ -3,7 +3,7 @@
 namespace BeholderWebClient\Eyes\Db\MySQL;
 
 use Exception;
-use BeholderWebClient\Eyes\Db\DbStatus as Status;
+use BeholderWebClient\Eyes\Db\MySQL\MySQLStatus as Status;
 use BeholderWebClient\Eyes\Db\AbstractAdapter;
 
 class Mysqli extends AbstractAdapter {
@@ -47,7 +47,7 @@ class Mysqli extends AbstractAdapter {
     }
 
     if(!$result)
-      parent::throwQueryBadFormated();
+      parent::throwBadFormatedQuery();
 
   }
 

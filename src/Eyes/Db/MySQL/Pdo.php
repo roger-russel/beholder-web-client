@@ -4,7 +4,7 @@ namespace BeholderWebClient\Eyes\Db\MySQL;
 
 use PDO as PHPDO;
 use Exception;
-use BeholderWebClient\Eyes\Db\DbStatus as Status;
+use BeholderWebClient\Eyes\Db\MySQL\MySQLStatus as Status;
 use BeholderWebClient\Eyes\Db\AbstractAdapter;
 
 class Pdo  extends AbstractAdapter {
@@ -54,7 +54,7 @@ class Pdo  extends AbstractAdapter {
         $this->execDropquery('drop');
 
       if(!$this->ran)
-        parent::throwQueryBadFormated();
+        parent::throwBadFormatedQuery();
 
   }
 

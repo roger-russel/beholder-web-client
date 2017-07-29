@@ -22,7 +22,7 @@ class MySQLConnectTest extends \Codeception\Test\Unit
 
     public function testInvalidConnect() {
 
-      $eyeName = 'PostgreSQLConnect';
+      $eyeName = 'MySQLConnect';
 
       $conf = [
         'eyes' => [
