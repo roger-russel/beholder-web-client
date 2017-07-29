@@ -100,7 +100,7 @@ class ExpireTest extends \Codeception\Test\Unit
 
       $this->assertArrayHasKey($eyeName, $result);
       $this->assertEquals(Status::NOT_IMPLEMENTED_NUMBER, $result[$eyeName]['status'], 'Status should be ' . Status::NOT_IMPLEMENTED_NUMBER);
-      $this->assertEquals(Status::UNKNOW_EXPIRE_DATE, $result[$eyeName]['message'], 'Message should be ' . Status::UNKNOW_EXPIRE_DATE);
+      $this->assertEquals(Status::UNKNOWN_EXPIRE_DATE, $result[$eyeName]['message'], 'Message should be ' . Status::UNKNOWN_EXPIRE_DATE);
 
     }
 

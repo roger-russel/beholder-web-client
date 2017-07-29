@@ -56,7 +56,7 @@ Class Eye extends AbstractDomain {
     $r = preg_match('/^expires:[\s\t]+([\d]+)$/m', $this->domainInfo ,$m);
 
     if($r === 0)
-      throw new Exception(Status::UNKNOW_EXPIRE_DATE, Status::NOT_IMPLEMENTED_NUMBER);
+      throw new Exception(Status::UNKNOWN_EXPIRE_DATE, Status::NOT_IMPLEMENTED_NUMBER);
 
     $date = $m[1];
 
