@@ -20,6 +20,37 @@ class MySQLConnectTest extends \Codeception\Test\Unit
     {
     }
 
+    public function testInvalidConnect() {
+
+      $eyeName = 'PostgreSQLConnect';
+
+      $conf = [
+        'eyes' => [
+            $eyeName => [
+              'type' => 'Db\MySQL',
+              'host' => 'beholder-test-mysql',
+              'user' => 'root',
+              'password' => 'initial123456',
+              'dbname' => 'beholder_test',
+              'port' => '3306'
+            ]
+        ]
+      ];
+
+      $beholder = new BeholderWebClient\Observer();
+      $beholder->setConf($conf);
+      $beholder->run();
+
+      $result = $beholder->getResult();
+
+      $message = substr($result[$eyeName]['message'],0,strlen(Status::COULD_NOT_CONNECT_TO_SGBD));
+
+      $this->assertArrayHasKey($eyeName, $result);
+      $this->assertEquals(Status::COULD_NOT_CONNECT_TO_SGBD_NUMBER, $result[$eyeName]['status']);
+      $this->assertEquals(Status::COULD_NOT_CONNECT_TO_SGBD, $message);
+
+    }
+
     public function testValidConnect() {
 
       $eyeName = 'MySQLConnect';

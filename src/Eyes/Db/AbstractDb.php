@@ -12,8 +12,8 @@ abstract class AbstractDb extends AbstractEye implements iDb {
   abstract protected function testConn();
   abstract protected function testQuery();
   abstract protected function getDefaultPort();
-  abstract protected selectAdapter($adapter);
-  abstract protected autoDetectAdapter();
+  abstract protected function selectAdapter($adapter);
+  abstract protected function autoDetectAdapter();
 
   protected $code;
   protected $message;

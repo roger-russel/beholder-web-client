@@ -1,6 +1,7 @@
 <?php
 
 namespace BeholderWebClient;
+use Exception;
 
 Class Observer implements iObserver {
 
@@ -42,7 +43,9 @@ Class Observer implements iObserver {
     switch ( pathinfo($file, PATHINFO_EXTENSION) ) {
       case 'yaml':
       case 'yml':
-        $this->setConf(yaml_parse_file($file));
+        if (!function_exists('yaml_parse_file'))
+          throw new Exception("Lib Yaml is required.", 500);
+        $this->setConf(\yaml_parse_file($file));
         break;
       case 'php';
         $this->setConf(require $file);
