@@ -4,7 +4,7 @@ use BeholderWebClient\Eyes\Db\DbStatus as Status;
 
 require_once '/var/www/vendor/autoload.php';
 
-class PostgreSQLQueryTest extends \Codeception\Test\Unit
+class MySQLQueryTest extends \Codeception\Test\Unit
 {
     /**
      * @var \UnitTester
@@ -32,7 +32,7 @@ class PostgreSQLQueryTest extends \Codeception\Test\Unit
               'user' => 'root',
               'password' => 'initial1234',
               'dbname' => 'beholder_test',
-              'port' => '3306'
+              'port' => '3306',
               'query' => [
 
               ]
