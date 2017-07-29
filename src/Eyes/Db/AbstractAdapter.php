@@ -1,13 +1,13 @@
 <?php
 
-namespace BeholderWebClient\Eyes\Db\MySQL;
+namespace BeholderWebClient\Eyes\Db;
 
 use Exception;
 use BeholderWebClient\Eyes\Db\DbStatus as Status;
 
 Abstract class AbstractAdapter implements iAdapter {
 
-  const PREFIX_RQ_FAIL = 'Requeriment fail: ';
+  const PREFIX_RQ_FAIL = 'Requirement fail: ';
 
   public function __construct($conf){
     $this->conf = $conf;
@@ -18,7 +18,7 @@ Abstract class AbstractAdapter implements iAdapter {
   }
 
   public static function throwQueryBadFormated(){
-    throw new Exception(Status::EXPECTATION_FAILED . ' - query bad formated', Status::EXPECTATION_FAILED_NUMBER);
+    throw new Exception(Status::EXPECTATION_FAILED . ' - bad formated query', Status::EXPECTATION_FAILED_NUMBER);
   }
 
   public function getMergedArrayQuery($arr){

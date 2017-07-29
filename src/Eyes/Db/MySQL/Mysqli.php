@@ -4,6 +4,7 @@ namespace BeholderWebClient\Eyes\Db\MySQL;
 
 use Exception;
 use BeholderWebClient\Eyes\Db\DbStatus as Status;
+use BeholderWebClient\Eyes\Db\AbstractAdapter;
 
 class Mysqli extends AbstractAdapter {
 

@@ -12,6 +12,8 @@ abstract class AbstractDb extends AbstractEye implements iDb {
   abstract protected function testConn();
   abstract protected function testQuery();
   abstract protected function getDefaultPort();
+  abstract protected selectAdapter($adapter);
+  abstract protected autoDetectAdapter();
 
   protected $code;
   protected $message;
@@ -23,6 +25,13 @@ abstract class AbstractDb extends AbstractEye implements iDb {
       $conf['port'] = $this->getDefaultPort();
 
     parent::__construct($conf);
+
+    if(isset($this->conf['driver'])){
+      $this->selectAdapter($this->conf['driver']);
+    }else{
+      $this->autoDetectAdapter();
+    }
+
 
   }
 

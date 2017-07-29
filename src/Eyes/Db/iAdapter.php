@@ -1,6 +1,6 @@
 <?php
 
-namespace BeholderWebClient\Eyes\Db\MySQL;
+namespace BeholderWebClient\Eyes\Db;
 
 interface iAdapter {
 

@@ -5,6 +5,7 @@ namespace BeholderWebClient\Eyes\Db\MySQL;
 use PDO as PHPDO;
 use Exception;
 use BeholderWebClient\Eyes\Db\DbStatus as Status;
+use BeholderWebClient\Eyes\Db\AbstractAdapter;
 
 class Pdo  extends AbstractAdapter {
 
@@ -38,16 +39,16 @@ class Pdo  extends AbstractAdapter {
         $this->execCreatequery('create');
 
       if(isset($this->conf['query']['insert']))
-        $this->execquery('insert', Status::QUERY_INSERT_FAIL_NUMBER, Status::QUERY_INSERT_FAIL);
+        $this->execQuery('insert', Status::QUERY_INSERT_FAIL_NUMBER, Status::QUERY_INSERT_FAIL);
 
       if(isset($this->conf['query']['update']))
-        $this->execquery('update', Status::QUERY_UPDATE_FAIL_NUMBER, Status::QUERY_UPDATE_FAIL);
+        $this->execQuery('update', Status::QUERY_UPDATE_FAIL_NUMBER, Status::QUERY_UPDATE_FAIL);
 
       if(isset($this->conf['query']['select']))
         $this->selectquery();
 
       if(isset($this->conf['query']['delete']))
-        $this->execquery('delete', Status::QUERY_DELETE_FAIL_NUMBER, Status::QUERY_DELETE_FAIL);
+        $this->execQuery('delete', Status::QUERY_DELETE_FAIL_NUMBER, Status::QUERY_DELETE_FAIL);
 
       if(isset($this->conf['query']['drop']))
         $this->execDropquery('drop');
@@ -57,7 +58,7 @@ class Pdo  extends AbstractAdapter {
 
   }
 
-  protected function execquery($type, $errNo, $errMessage){
+  protected function execQuery($type, $errNo, $errMessage){
 
     $this->ran = true;
 

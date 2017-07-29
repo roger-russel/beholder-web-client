@@ -1,7 +1,6 @@
 <?php
 
-use BeholderWebClient\Eyes\Nfs\Eye;
-use BeholderWebClient\Eyes\Nfs\NfsStatus as Status;
+use BeholderWebClient\Eyes\Db\DbStatus as Status;
 
 require_once '/var/www/vendor/autoload.php';
 

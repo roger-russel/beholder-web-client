@@ -10,18 +10,7 @@ Class Eye extends AbstractDb {
 
   protected $adapter;
 
-  const default_port = 3306;
-
-  public function __construct($conf){
-    parent::__construct($conf);
-
-    if(isset($this->conf['driver'])){
-      $this->selectAdapter($this->conf['driver']);
-    }else{
-      $this->selectAdapterAuto();
-    }
-
-  }
+  const DEFAULT_PORT = 3306;
 
   public function checkRequirement(){
 
@@ -33,7 +22,7 @@ Class Eye extends AbstractDb {
   }
 
   protected function getDefaultPort(){
-    return self::default_port;
+    return self::DEFAULT_PORT;
   }
 
   public function testConn(){
@@ -69,7 +58,7 @@ Class Eye extends AbstractDb {
 
   }
 
-  protected function selectAdapterAuto(){
+  protected function autoDetectAdapter(){
 
     switch(true){
       case class_exists("PDO"):
