@@ -1,6 +1,6 @@
 # Beholder Eye - Domain
 
-This beholder eye keep an eye on Domains, if it's published, if exists, or are into other status.
+This beholder eye keep an eye on Domains, if it's published, if it exists, or it are into another status.
 
 ## Dependencies
 
