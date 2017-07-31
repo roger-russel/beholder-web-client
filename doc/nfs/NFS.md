@@ -8,7 +8,7 @@ This beholder eye keep an eye into NFS, if it's mounted, if it's possible to rea
 
 ## Exemple of use
 
-<code>
+```
 require 'vendor/autoload.php';
 
 $conf = [
@@ -28,4 +28,4 @@ $beholder = new BeholderWebClient\Observer($conf);
 $beholder->run();
 $beholder->writeJson();
 
-</code>
+```

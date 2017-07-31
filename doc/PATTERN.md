@@ -17,6 +17,6 @@ This beholder eyes keep an eye into APT system, APT is just a ficticius name.
 
 Follow an example of how to use it.
 
-<code>
+```
 ...
-</code>
+```

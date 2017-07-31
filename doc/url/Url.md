@@ -8,7 +8,7 @@ This beholder eye keep an eye into an Url for you. It can be an API an image or 
 
 ## Example of use
 
-<code>
+```
 require 'vendor/autoload.php';
 
 $conf = [
@@ -28,4 +28,4 @@ $beholder = new BeholderWebClient\Observer($conf);
 $beholder->run();
 $beholder->writeJson();
 
-</code>
+```
