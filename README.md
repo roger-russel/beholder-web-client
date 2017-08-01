@@ -17,7 +17,7 @@ Some modules could have more dependencies, please look at src/Eyes/ModuleName/Re
 
 ## How Install
 
-In your composer.json file put the *repositories* and *require* like this:
+Use the command below to add the dependencies inside the composer.json file:
 
 > `$ composer require roger-russel/beholder-web-client;`
 
