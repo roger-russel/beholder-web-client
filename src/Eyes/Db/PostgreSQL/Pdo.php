@@ -62,14 +62,23 @@ class Pdo  extends AbstractAdapter {
 
     $this->ran = true;
 
-    foreach($this->conf['query'][$type] as $sql ){
+    try {
 
-      $sth = $this->pdo->prepare($sql);
-      $sth->execute();
+      if(!is_array($this->conf['query'][$type]))
+        $this->conf['query'][$type] = [$this->conf['query'][$type]];
 
-      if($sth->rowCount() < 1)
-        throw new Exception($errMessage . " - {$sql}", $errNo);
+      foreach($this->conf['query'][$type] as $sql ){
 
+        $sth = $this->pdo->prepare($sql);
+        $sth->execute();
+
+        if($sth->rowCount() < 1)
+          throw new Exception(STATUS::QUERY_INSERT_NOTHING, $errNo);
+
+      }
+
+    } catch(Exception $ex){
+        throw new Exception("{$errMessage} - {$sql} " . $ex->getMessage(), $errNo);
     }
 
   }
@@ -78,17 +87,25 @@ class Pdo  extends AbstractAdapter {
 
     $this->ran = true;
 
-    foreach($this->conf['query']['select'] as $sql ) {
+    try {
 
-      $sth = $this->pdo->prepare($sql);
-      $sth->execute();
+      if(!is_array($this->conf['query']['select']))
+        $this->conf['query']['select'] = [$this->conf['query']['select']];
 
-      $result = $sth->fetch(PHPDO::FETCH_NUM);
+      foreach($this->conf['query']['select'] as $sql ) {
 
-      if(count($result) < 1)
-        throw new Exception(Status::QUERY_SELECT_FAIL_NUMBER, Status::QUERY_SELECT_FAIL);
+        $sth = $this->pdo->prepare($sql);
+        $sth->execute();
 
+        $result = $sth->fetchAll(PHPDO::FETCH_NUM);
 
+        if(count($result) < 1)
+          throw new Exception(Status::QUERY_SELECT_RETURN_NOTHING);
+
+      }
+
+    } catch(Exception $ex){
+        throw new Exception(Status::QUERY_SELECT_FAIL . " - {$sql} " . $ex->getMessage(), Status::QUERY_SELECT_FAIL_NUMBER);
     }
 
   }
@@ -99,12 +116,15 @@ class Pdo  extends AbstractAdapter {
 
     try {
 
+      if(!is_array($this->conf['query']['create']))
+        $this->conf['query']['create'] = [$this->conf['query']['create']];
+
       foreach($this->conf['query']['create'] as $sql ){
         $this->pdo->exec($sql);
       }
 
     } catch(Exception $ex){
-        throw new Exception(Status::COULD_NOT_CREATE_TABLE . " - {$sql} " . $ex->getMessage(), Status::COULD_NOT_CREATE_TABLE_NUMBER);
+        throw new Exception(Status::COULD_NOT_CREATE . " - {$sql} " . $ex->getMessage(), Status::COULD_NOT_CREATE_NUMBER);
     }
 
   }
@@ -115,12 +135,15 @@ class Pdo  extends AbstractAdapter {
 
     try {
 
+      if(!is_array($this->conf['query']['drop']))
+        $this->conf['query']['drop'] = [$this->conf['query']['drop']];
+
       foreach($this->conf['query']['drop'] as $sql ){
         $this->pdo->exec($sql);
       }
 
     } catch(Exception $ex){
-        throw new Exception(Status::COULD_NOT_DROP_TABLE . " - {$sql} " . $ex->getMessage(), Status::COULD_NOT_DROP_TABLE_NUMBER);
+        throw new Exception(Status::COULD_NOT_DROP . " - {$sql} " . $ex->getMessage(), Status::COULD_NOT_DROP_NUMBER);
     }
   }
 

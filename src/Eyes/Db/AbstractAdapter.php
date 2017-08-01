@@ -28,12 +28,12 @@ Abstract class AbstractAdapter implements iAdapter {
     };
 
     return array_merge(
-      isset($arr['create']) ? $f($arr['create'], Status::COULD_NOT_CREATE_TABLE_NUMBER, Status::COULD_NOT_CREATE_TABLE) : [],
+      isset($arr['create']) ? $f($arr['create'], Status::COULD_NOT_CREATE_NUMBER, Status::COULD_NOT_CREATE) : [],
       isset($arr['insert']) ? $f($arr['insert'], Status::QUERY_INSERT_FAIL_NUMBER, Status::QUERY_INSERT_FAIL) : [],
       isset($arr['update']) ? $f($arr['update'], Status::QUERY_UPDATE_FAIL_NUMBER, Status::QUERY_UPDATE_FAIL) : [],
       isset($arr['select']) ? $f($arr['select'], Status::QUERY_SELECT_FAIL_NUMBER, Status::QUERY_SELECT_FAIL) : [],
       isset($arr['delete']) ? $f($arr['delete'], Status::QUERY_DELETE_FAIL_NUMBER, Status::QUERY_DELETE_FAIL) : [],
-      isset($arr['drop'])   ? $f($arr['drop'  ], Status::COULD_NOT_DROP_TABLE_NUMBER, Status::COULD_NOT_DROP_TABLE) : []
+      isset($arr['drop'])   ? $f($arr['drop'  ], Status::COULD_NOT_DROP_NUMBER, Status::COULD_NOT_DROP) : []
     );
 
   }
