@@ -25,6 +25,6 @@
     "codeception/codeception": "^2.3"
   },
   "suggest": {
-    "yaml": "Neede to support Yaml configuration file."
+    "yaml": "Needed to support Yaml configuration file."
   }
 }
