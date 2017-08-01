@@ -19,20 +19,7 @@ Some modules could have more dependencies, please look at src/Eyes/ModuleName/Re
 
 In your composer.json file put the *repositories* and *require* like this:
 
-```
-{
-  "name": "YourProjectName",
-  "description": "Your project description",
-  "type": "YourProjectType",
-  "repositories": [{
-      "type" : "vcs",
-      "url": "https://github.com/RogerRussel/beholder-web-client.git"
-  }],
-  "require": {
-    "RogerRussel/beholder-web-client": "\*"
-  }
-}
-```
+> `$ composer require roger-russel/beholder-web-client;`
 
 Then run:
 
