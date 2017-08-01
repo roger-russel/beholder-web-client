@@ -15,6 +15,7 @@ RUN apt-get update && apt-get install -y \
   libyaml-dev \
   libpq-dev \
   build-essential \
+  whois \
   && rm -rf /var/lib/apt/lists/*
 
 RUN pecl install yaml-1.3.1
