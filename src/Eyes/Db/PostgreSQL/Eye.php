@@ -1,16 +1,16 @@
 <?php
 
-namespace BeholderWebClient\Eyes\Db\MySQL;
+namespace BeholderWebClient\Eyes\Db\PostgreSQL;
 
 use Exception;
-use BeholderWebClient\Eyes\Db\MySQL\MySQLStatus as Status;
+use BeholderWebClient\Eyes\Db\PostgreSQL\PostgreSQLStatus as Status;
 use BeholderWebClient\Eyes\Db\AbstractDb;
 
 Class Eye extends AbstractDb {
 
   protected $adapter;
 
-  const DEFAULT_PORT = 3306;
+  const DEFAULT_PORT = 5432;
 
   public function checkRequirement(){
 
@@ -37,7 +37,7 @@ Class Eye extends AbstractDb {
 
       $adapterName = ucfirst(strtolower($adapter));
 
-      $adapterFullName = "\BeholderWebClient\Eyes\Db\MySQL\\{$adapterName}";
+      $adapterFullName = "\BeholderWebClient\Eyes\Db\PostgreSQL\\{$adapterName}";
 
       if(class_exists($adapterFullName)){
 
@@ -54,12 +54,6 @@ Class Eye extends AbstractDb {
     switch(true){
       case class_exists("PDO"):
         $this->adapter = new Pdo($this->conf);
-        break;
-      case class_exists("mysqli"):
-        $this->adapter = new Mysqli($this->conf);
-        break;
-      case function_exists("mysql_connect"):
-        $this->adapter = new Mysql($this->conf);
         break;
     }
 

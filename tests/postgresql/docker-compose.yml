@@ -1,0 +1,19 @@
+version: '2'
+
+services:
+  beholder-test-postgresql:
+    image: postgres:9
+    container_name: beholder-test-postgresql
+    ports:
+      - "5432:5432"
+    environment:
+      - TERM=xterm
+      - LANG=en_US.UTF-8
+      - POSTGRES_DB=beholder_test
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=initial1234
+
+networks:
+  default:
+    external:
+      name: beholder-network

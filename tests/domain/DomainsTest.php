@@ -35,22 +35,13 @@ class DomainTest extends \Codeception\Test\Unit
         ]
       ];
 
-      try {
+      $beholder = new BeholderWebClient\Observer();
+      $beholder->setConf($conf);
+      $beholder->run();
+      $result = $beholder->getResult();
 
-        $beholder = new BeholderWebClient\Observer();
-        $beholder->setConf($conf);
-        $beholder->run();
-        $result = $beholder->getResult();
-
-      } catch(Exception $ex) {
-
-        $code = $ex->getCode();
-        $message = $ex->getMessage();
-
-      }
-
-      $this->assertEquals(Status::EXPECTATION_FAILED_NUMBER, $code, 'Status should be ' . Status::EXPECTATION_FAILED_NUMBER);
-      $this->assertEquals(Status::EXPECTATION_FAILED, $message, 'Message should be ' . Status::EXPECTATION_FAILED);
+      $this->assertEquals(Status::EXPECTATION_FAILED_NUMBER, $result[$eyeName]['status'], 'Status should be ' . Status::EXPECTATION_FAILED_NUMBER);
+      $this->assertEquals(Status::EXPECTATION_FAILED, $result[$eyeName]['message'], 'Message should be ' . Status::EXPECTATION_FAILED);
 
     }
 

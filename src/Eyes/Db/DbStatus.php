@@ -6,40 +6,29 @@ use BeholderWebClient\Eyes\Status;
 
 class DbStatus extends Status {
 
-  const NO_DRIVER = 'No Mysql driver found, it tried use PDO, mysqli and mysql, but neither of them has been found.';
-  const NO_DRIVER_NUMBER = 500; // Because it was a system error
-
   const COULD_NOT_CONNECT_TO_SGBD = 'Could not connect to SGBD';
   const COULD_NOT_CONNECT_TO_SGBD_NUMBER = 600;
 
-  const COULD_NOT_CREATE_DATABASE_NUMBER = 601;
-  const COULD_NOT_CREATE_DATABASE = 'Could not create database';
+  const COULD_NOT_CREATE_NUMBER = 601;
+  const COULD_NOT_CREATE = 'Could not create';
 
-  const COULD_NOT_CREATE_SCHEMA_NUMBER = 602;
-  const COULD_NOT_CREATE_SCHEMA = 'Could not create Schema';
+  const COULD_NOT_DROP_NUMBER = 602;
+  const COULD_NOT_DROP = 'Could not drop';
 
-  const COULD_NOT_CREATE_TABLE_NUMBER = 603;
-  const COULD_NOT_CREATE_TABLE = 'Could not create table';
-
-  const COULD_NOT_DROP_DATABASE_NUMBER = 604;
-  const COULD_NOT_DROP_DATABASE = 'Could not drop database';
-
-  const COULD_NOT_DROP_SCHEMA_NUMBER = 605;
-  const COULD_NOT_DROP_SCHEMA = 'Could not drop Schema';
-
-  const COULD_NOT_DROP_TABLE_NUMBER = 606;
-  const COULD_NOT_DROP_TABLE = 'Could not drop table';
-
-  const QUERY_SELECT_FAIL_NUMBER = 610;
+  const QUERY_SELECT_FAIL_NUMBER = 603;
   const QUERY_SELECT_FAIL = 'Query select fail';
 
-  const QUERY_INSERT_FAIL_NUMBER = 620;
+  const QUERY_INSERT_FAIL_NUMBER = 604;
   const QUERY_INSERT_FAIL = 'Query insert fail';
 
-  const QUERY_UPDATE_FAIL_NUMBER = 630;
+  const QUERY_UPDATE_FAIL_NUMBER = 605;
   const QUERY_UPDATE_FAIL = 'Query update fail';
 
-  const QUERY_DELETE_FAIL_NUMBER = 640;
+  const QUERY_DELETE_FAIL_NUMBER = 606;
   const QUERY_DELETE_FAIL = 'Query delte fail';
+
+  const BAD_FORMATED_QUERY = 'Query field was not correcly formated';
+  const QUERY_SELECT_RETURN_NOTHING = 'Query select returned nothing';
+  const QUERY_INSERT_NOTHING = 'Query insert nothing';
 
 }

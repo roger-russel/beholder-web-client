@@ -7,6 +7,7 @@ before_script:
   - docker-compose build
   - docker-compose up -d
   - tests/mysql/travis.sh
+  - tests/postgresql/travis.sh
   - composer install
   - tests/mysql/migrate.sh
 script:

@@ -36,12 +36,12 @@ class MergeTest extends \Codeception\Test\Unit
       $query = $mysql->getMergedArrayQuery($array);
 
       $this->assertEquals($query, [
-        [ 'query' => ['1', '7'], 'errNo' =>  Status::COULD_NOT_CREATE_TABLE_NUMBER, 'errMessage' => Status::COULD_NOT_CREATE_TABLE ],
+        [ 'query' => ['1', '7'], 'errNo' =>  Status::COULD_NOT_CREATE_NUMBER, 'errMessage' => Status::COULD_NOT_CREATE ],
         [ 'query' => ['2'], 'errNo' =>  Status::QUERY_INSERT_FAIL_NUMBER, 'errMessage' => Status::QUERY_INSERT_FAIL ],
         [ 'query' => ['3'], 'errNo' =>  Status::QUERY_UPDATE_FAIL_NUMBER, 'errMessage' => Status::QUERY_UPDATE_FAIL ],
         [ 'query' => ['4'], 'errNo' =>  Status::QUERY_SELECT_FAIL_NUMBER, 'errMessage' => Status::QUERY_SELECT_FAIL ],
         [ 'query' => ['5'], 'errNo' =>  Status::QUERY_DELETE_FAIL_NUMBER, 'errMessage' => Status::QUERY_DELETE_FAIL ],
-        [ 'query' => ['6'], 'errNo' =>  Status::COULD_NOT_DROP_TABLE_NUMBER, 'errMessage' => Status::COULD_NOT_DROP_TABLE ]
+        [ 'query' => ['6'], 'errNo' =>  Status::COULD_NOT_DROP_NUMBER, 'errMessage' => Status::COULD_NOT_DROP ]
       ]);
 
     }

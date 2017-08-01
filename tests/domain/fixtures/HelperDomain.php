@@ -8,7 +8,7 @@ class Eye extends OriginalEye {
 
   public function __construct($conf){
     parent::__construct($conf);
-    
+
     if(!empty($conf['now']))
       $this->now = $conf['now']; // This make test possible
   }

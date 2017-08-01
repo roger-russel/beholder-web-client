@@ -1,6 +1,7 @@
 <?php
 
 namespace BeholderWebClient;
+use Exception;
 
 Class Observer implements iObserver {
 
@@ -23,6 +24,7 @@ Class Observer implements iObserver {
   const IMPORTANCE_ALIAS = 'importance';
   const IMPORTANCE_DEFAULT = 'regular';
   const TIMEZONE_DEFAULT = 'America/Sao_Paulo';
+  const INTERNAL_SERVER_ERROR_NUMBER = 500;
 
   public function __construct(){
     $this->start = microtime();
@@ -42,7 +44,9 @@ Class Observer implements iObserver {
     switch ( pathinfo($file, PATHINFO_EXTENSION) ) {
       case 'yaml':
       case 'yml':
-        $this->setConf(yaml_parse_file($file));
+        if (!function_exists('yaml_parse_file'))
+          throw new Exception("Lib Yaml is required.", 500);
+        $this->setConf(\yaml_parse_file($file));
         break;
       case 'php';
         $this->setConf(require $file);
@@ -82,8 +86,11 @@ Class Observer implements iObserver {
 
     } catch (Exception $ex){
 
+      $code = $ex->getCode();
+      $code = $code > 400 ? $code : 500;
+
       $return = [
-          'status' => 500,
+          'status' =>  $code,
           'message' => $ex->getMessage(),
           $this->importance_alias => empty($conf['importance'])? $this->importance_default : $conf['importance']
       ];
