@@ -21,10 +21,6 @@ Use the command below to add the dependencies inside the composer.json file:
 
 > `$ composer require roger-russel/beholder-web-client;`
 
-Then run:
-
-> `$ composer install;`
-
 ### How to use
 
 You can look at a especific model configuration in doc/ModelName folder.
