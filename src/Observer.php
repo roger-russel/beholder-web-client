@@ -24,6 +24,7 @@ Class Observer implements iObserver {
   const IMPORTANCE_ALIAS = 'importance';
   const IMPORTANCE_DEFAULT = 'regular';
   const TIMEZONE_DEFAULT = 'America/Sao_Paulo';
+  const INTERNAL_SERVER_ERROR_NUMBER = 500;
 
   public function __construct(){
     $this->start = microtime();
@@ -85,8 +86,11 @@ Class Observer implements iObserver {
 
     } catch (Exception $ex){
 
+      $code = $ex->getCode();
+      $code = $code > 400 ? $code : 500;
+
       $return = [
-          'status' => 500,
+          'status' =>  $code,
           'message' => $ex->getMessage(),
           $this->importance_alias => empty($conf['importance'])? $this->importance_default : $conf['importance']
       ];

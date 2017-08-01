@@ -16,6 +16,7 @@ Class Eye extends AbstractDomain {
 
     if(empty($this->conf['domain']))
       throw new Exception(Status::EXPECTATION_FAILED, Status::EXPECTATION_FAILED_NUMBER);
+
   }
 
   protected function getDomainInfo(){
