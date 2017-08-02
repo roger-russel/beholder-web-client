@@ -25,7 +25,7 @@ class DbStatus extends Status {
   const QUERY_UPDATE_FAIL = 'Query update fail';
 
   const QUERY_DELETE_FAIL_NUMBER = 606;
-  const QUERY_DELETE_FAIL = 'Query delte fail';
+  const QUERY_DELETE_FAIL = 'Query delete fail';
 
   const BAD_FORMATED_QUERY = 'Query field was not correcly formated';
   const QUERY_SELECT_RETURN_NOTHING = 'Query select returned nothing';
