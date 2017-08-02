@@ -10,7 +10,7 @@ abstract class AbstractPdo extends AbstractAdapter {
   public function testQuery(){
 
       if(!empty($this->conf['query']['create']))
-        $this->execCreatequery('create');
+        $this->execCreateQuery('create');
 
       if(!empty($this->conf['query']['insert']))
         $this->execQuery('insert', Status::QUERY_INSERT_FAIL_NUMBER, Status::QUERY_INSERT_FAIL);
@@ -19,13 +19,13 @@ abstract class AbstractPdo extends AbstractAdapter {
         $this->execQuery('update', Status::QUERY_UPDATE_FAIL_NUMBER, Status::QUERY_UPDATE_FAIL);
 
       if(!empty($this->conf['query']['select']))
-        $this->selectquery();
+        $this->selectQuery();
 
       if(!empty($this->conf['query']['delete']))
         $this->execQuery('delete', Status::QUERY_DELETE_FAIL_NUMBER, Status::QUERY_DELETE_FAIL);
 
       if(!empty($this->conf['query']['drop']))
-        $this->execDropquery('drop');
+        $this->execDropQuery('drop');
 
       if(!$this->ran)
         parent::throwBadFormatedQuery();
@@ -57,7 +57,7 @@ abstract class AbstractPdo extends AbstractAdapter {
 
   }
 
-  protected function selectquery(){
+  protected function selectQuery(){
 
     $this->ran = true;
 
@@ -84,7 +84,7 @@ abstract class AbstractPdo extends AbstractAdapter {
 
   }
 
-  protected function execCreatequery(){
+  protected function execCreateQuery(){
 
     $this->ran = true;
 
@@ -103,7 +103,7 @@ abstract class AbstractPdo extends AbstractAdapter {
 
   }
 
-  protected function execDropquery(){
+  protected function execDropQuery(){
 
     $this->ran = true;
 
