@@ -11,6 +11,12 @@ class MySQLConnectTest extends \Codeception\Test\Unit
      */
     protected $tester;
 
+    public function __construct(){
+
+      $pdo = require __DIR__ . '/helperPdo.php';
+      $pdo->exec('CREATE DATABASE IF NOT EXISTS beholder_test');
+    }
+
     protected function _before()
     {
 

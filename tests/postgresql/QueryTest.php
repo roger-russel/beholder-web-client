@@ -14,6 +14,7 @@ class PostgreSQLQueryTest extends \Codeception\Test\Unit
     protected $prefix = '';
 
     public function __construct(){
+      date_default_timezone_set('America/Sao_Paulo');
       $this->prefix = date('YmdHis');
     }
 
@@ -228,7 +229,6 @@ class PostgreSQLQueryTest extends \Codeception\Test\Unit
       $this->assertEquals(Status::QUERY_INSERT_FAIL_NUMBER, $result[$eyeName]['status']);
 
     }
-
 
     public function testUpdateQuery() {
 
