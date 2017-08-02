@@ -8,7 +8,9 @@ before_script:
   - docker-compose up -d
   - tests/mysql/travis.sh
   - tests/postgresql/travis.sh
+  - tests/mongodb/travis.sh
   - composer install
   - tests/mysql/migrate.sh
+  - tests/mongodb/migrate.sh
 script:
   - docker exec -it beholder-web-client bash -c 'vendor/bin/codecept run || exit $?'

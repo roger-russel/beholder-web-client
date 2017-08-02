@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+  beholder-test-mysql:
+    image: mongo:3.0
+    container_name: beholder-test-mongo
+    ports:
+      - "27017:27017"
+    environment:
+      - TERM=xterm
+
+networks:
+  default:
+    external:
+      name: beholder-network
