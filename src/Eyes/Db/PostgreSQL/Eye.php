@@ -15,7 +15,7 @@ Class Eye extends AbstractDb {
   public function checkRequirement(){
 
     if(is_null($this->adapter))
-      throw new Exception(Status::NO_DRIVER, Status::INTERNAL_SERVER_ERROR);
+      throw new Exception(Status::NO_DRIVER, Status::INTERNAL_SERVER_ERROR_NUMBER);
 
     $this->adapter->checkRequirement();
 
