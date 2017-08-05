@@ -67,8 +67,8 @@ class RedisConnectTest extends \Codeception\Test\Unit
       $result = $beholder->getResult();
 
       $this->assertArrayHasKey($eyeName, $result);
-      $this->assertEquals(Status::OK_NUMBER, $result[$eyeName]['status']);
       $this->assertEquals(Status::OK, $result[$eyeName]['message']);
+      $this->assertEquals(Status::OK_NUMBER, $result[$eyeName]['status']);
 
     }
 

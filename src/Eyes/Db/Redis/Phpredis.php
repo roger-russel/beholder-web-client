@@ -20,16 +20,14 @@ class Phpredis extends AbstractAdapter {
 
   public function testConn(){
 
-    $dns = $this->conf['host'] . ':' . $this->conf['port'];
-
     try {
 
       $this->redis = new Redis();
-      $conn = $this->redis->connect($this->conf['host'], 6379);
+      $conn = $this->redis->connect($this->conf['host'], $this->conf['port']);
 
       if(!$conn)
         parent::throwCouldNotConnect();
-        
+
     }catch(Exception $ex){
       parent::throwCouldNotConnect($ex->getMessage());
     }

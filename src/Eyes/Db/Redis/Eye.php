@@ -10,7 +10,7 @@ Class Eye extends AbstractDb {
 
   protected $adapter;
 
-  const DEFAULT_PORT = 5432;
+  const DEFAULT_PORT = 6379;
 
   public function checkRequirement(){
 
