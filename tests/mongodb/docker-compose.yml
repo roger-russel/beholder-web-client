@@ -1,7 +1,7 @@
 version: '2'
 
 services:
-  beholder-test-mysql:
+  beholder-test-mongo:
     image: mongo:3.0
     container_name: beholder-test-mongo
     ports:
