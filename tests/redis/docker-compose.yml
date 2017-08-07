@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+  beholder-test-redis:
+    image: redis:3.2
+    container_name: beholder-test-redis
+    ports:
+      - "6379:6379"
+    environment:
+      - TERM=xterm
+      - LANG=en_US.UTF-8
+
+networks:
+  default:
+    external:
+      name: beholder-network
