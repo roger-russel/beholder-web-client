@@ -35,24 +35,8 @@ class Phpredis extends AbstractAdapter {
 
   public function testQuery(){
 
-    $mergedArrQuery = $this->getMergedArrayQuery();
-
-    $result = false;
-
-    foreach( $mergedArrQuery as $arrQuery ){
-      foreach( $arrQuery['query'] as $query ) {
-
-          $result = mysql_query($query);
-
-          if(!$result){
-            throw new Exception($arrQuery['errMessage'] . ' - ' . $query, $arrQuery['errNo']);
-          }
-      }
-    }
-
-    if(!$result)
-      parent::throwBadFormatedQuery();
-
+    throw new Exception(Status::NOT_IMPLEMENTED, Status::NOT_IMPLEMENTED_NUMBER);
+    
   }
 
   public function closeConnection(){
