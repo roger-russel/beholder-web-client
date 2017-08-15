@@ -116,7 +116,7 @@ class ObserverTest extends \Codeception\Test\Unit
 
     }
 
-    public function testOverviewWhenASingleGoesRigth(){
+    public function testOverviewWhenASingleGoesRight(){
 
       $path = '/mnt/read';
       $filename = 'notwritable.txt';
@@ -144,7 +144,7 @@ class ObserverTest extends \Codeception\Test\Unit
 
     }
 
-    public function testOverviewWhenAMultipleGoesRigth(){
+    public function testOverviewWhenAMultipleGoesRight(){
 
       $path = '/mnt/read';
       $filename = 'notwritable.txt';
@@ -268,7 +268,7 @@ class ObserverTest extends \Codeception\Test\Unit
             'path' => $path,
             'filename' => $filename,
             'write' => false,
-            'read' => false            
+            'read' => false
           ]
         ]
 
