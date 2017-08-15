@@ -35,4 +35,4 @@ RUN docker-php-ext-install \
   mysqli \
   pdo_pgsql
 
-CMD ["php", "-S", "localhost:80", "-t", "tests/acceptance/fixtures"]
+CMD ["php", "-S", "0.0.0.0:80", "-t", "tests/acceptance/fixtures"]
