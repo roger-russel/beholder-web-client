@@ -10,7 +10,8 @@ Class Observer implements iObserver {
   protected $response = [
     'info' => [
       'startat' => null,
-      'runtime' => null
+      'runtime' => null,
+      'overview' => self::OVERVIEW_OK
     ]
   ];
   protected $env;
@@ -25,9 +26,12 @@ Class Observer implements iObserver {
   const IMPORTANCE_DEFAULT = 'regular';
   const TIMEZONE_DEFAULT = 'America/Sao_Paulo';
   const INTERNAL_SERVER_ERROR_NUMBER = 500;
+  const SOMETHING_IS_WRONG = 'error';
+  const OVERVIEW_OK = 'ok';
 
   public function __construct(){
     $this->start = microtime();
+
   }
 
   public function setConf($conf){
@@ -62,6 +66,9 @@ Class Observer implements iObserver {
         throw new Exception("Monitor Name: {$name}, already in use, please change the name", 1);
 
       $this->response[$name] = $this->runnit($name, $conf);
+
+      if($this->response[$name]['status'] !== 200)
+        $this->response['info']['overview'] = self::SOMETHING_IS_WRONG;
 
     }
 
