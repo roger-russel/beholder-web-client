@@ -116,4 +116,171 @@ class ObserverTest extends \Codeception\Test\Unit
 
     }
 
+    public function testOverviewWhenASingleGoesRight(){
+
+      $path = '/mnt/read';
+      $filename = 'notwritable.txt';
+
+      $eyeName = 'test';
+
+      $conf = [
+        'eyes' => [
+          $eyeName => [
+            'type' => 'Nfs',
+            'path' => $path,
+            'filename' => $filename,
+            'write' => false,
+            'read' => false
+          ]
+        ]
+
+      ];
+
+      $beholder = new HelperObserver();
+      $beholder->setConf($conf);
+      $beholder->run();
+      $result = $beholder->getResult();
+      $this->assertEquals($result['info']['overview'], HelperObserver::OVERVIEW_OK);
+
+    }
+
+    public function testOverviewWhenAMultipleGoesRight(){
+
+      $path = '/mnt/read';
+      $filename = 'notwritable.txt';
+
+      $conf = [
+        'eyes' => [
+          'teste1' => [
+            'type' => 'Nfs',
+            'path' => $path,
+            'filename' => $filename,
+            'write' => false,
+            'read' => false
+          ],
+          'teste2' => [
+            'type' => 'Nfs',
+            'path' => $path,
+            'filename' => $filename,
+            'write' => false,
+            'read' => false
+          ],
+          'teste3' => [
+            'type' => 'Nfs',
+            'path' => $path,
+            'filename' => $filename,
+            'write' => false,
+            'read' => false
+          ]
+        ]
+
+      ];
+
+      $beholder = new HelperObserver();
+      $beholder->setConf($conf);
+      $beholder->run();
+      $result = $beholder->getResult();
+      $this->assertEquals($result['info']['overview'], HelperObserver::OVERVIEW_OK);
+
+    }
+
+    public function testOverviewWhenASingleGoesWrong(){
+
+      $path = '/mnt/read';
+      $filename = 'notwritable.txt';
+
+      $eyeName = 'test';
+
+      $conf = [
+        'eyes' => [
+          $eyeName => [
+            'type' => 'Nfs',
+            'path' => $path,
+            'filename' => $filename,
+          ]
+        ]
+
+      ];
+
+      $beholder = new HelperObserver();
+      $beholder->setConf($conf);
+      $beholder->run();
+      $result = $beholder->getResult();
+      $this->assertEquals($result['info']['overview'], HelperObserver::SOMETHING_IS_WRONG);
+
+    }
+
+    public function testOverviewWhenAMultipleGoesWrong(){
+
+      $path = '/mnt/read';
+      $filename = 'notwritable.txt';
+
+      $conf = [
+        'eyes' => [
+          'teste1' => [
+            'type' => 'Nfs',
+            'path' => $path,
+            'filename' => $filename,
+          ],
+          'teste2' => [
+            'type' => 'Nfs',
+            'path' => $path,
+            'filename' => $filename,
+          ],
+          'teste3' => [
+            'type' => 'Nfs',
+            'path' => $path,
+            'filename' => $filename,
+          ]
+        ]
+
+      ];
+
+      $beholder = new HelperObserver();
+      $beholder->setConf($conf);
+      $beholder->run();
+      $result = $beholder->getResult();
+      $this->assertEquals($result['info']['overview'], HelperObserver::SOMETHING_IS_WRONG);
+
+    }
+
+    public function testOverviewWhenASingleGoesWrognOnMultipleWhichGoesRight(){
+
+      $path = '/mnt/read';
+      $filename = 'notwritable.txt';
+
+      $conf = [
+        'eyes' => [
+          'teste1' => [
+            'type' => 'Nfs',
+            'path' => $path,
+            'filename' => $filename,
+            'write' => false,
+            'read' => false
+          ],
+          'teste2' => [
+            'type' => 'Nfs',
+            'path' => $path,
+            'filename' => $filename,
+          ],
+          'teste3' => [
+            'type' => 'Nfs',
+            'path' => $path,
+            'filename' => $filename,
+            'write' => false,
+            'read' => false
+          ]
+        ]
+
+      ];
+
+      $beholder = new HelperObserver();
+      $beholder->setConf($conf);
+      $beholder->run();
+      $result = $beholder->getResult();
+      $this->assertEquals($result['info']['overview'], HelperObserver::SOMETHING_IS_WRONG);
+
+    }
+
+
 }
