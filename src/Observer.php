@@ -85,10 +85,11 @@ Class Observer implements iObserver {
       $eye->checkRequirement();
       $eye->look();
 
+      $code = $eye->getStatusCode();
+
       $return = [
-        'status' => $eye->getStatusCode(),
+        'status' => $code,
         'message' => $eye->getMessage(),
-        $this->importance_alias => empty($conf['importance'])? $this->importance_default : $conf['importance']
       ];
 
     } catch (Exception $ex){
@@ -99,10 +100,12 @@ Class Observer implements iObserver {
       $return = [
           'status' =>  $code,
           'message' => $ex->getMessage(),
-          $this->importance_alias => empty($conf['importance'])? $this->importance_default : $conf['importance']
       ];
 
     }
+
+    if($code !== 200)
+        $return[$this->importance_alias] = empty($conf['importance'])? $this->importance_default : $conf['importance'];
 
     return $return;
 

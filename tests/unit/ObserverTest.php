@@ -115,7 +115,6 @@ class ObserverTest extends \Codeception\Test\Unit
       $this->assertEquals($result[$eyeName]['importance'], HelperObserver::IMPORTANCE_DEFAULT);
 
     }
-
     public function testOverviewWhenASingleGoesRight(){
 
       $path = '/mnt/read';
@@ -141,6 +140,7 @@ class ObserverTest extends \Codeception\Test\Unit
       $beholder->run();
       $result = $beholder->getResult();
       $this->assertEquals($result['info']['overview'], HelperObserver::OVERVIEW_OK);
+      $this->assertArrayNotHasKey('importance', $result[$eyeName]);
 
     }
 
@@ -207,7 +207,7 @@ class ObserverTest extends \Codeception\Test\Unit
       $beholder->run();
       $result = $beholder->getResult();
       $this->assertEquals($result['info']['overview'], HelperObserver::SOMETHING_IS_WRONG);
-
+      $this->assertArrayHasKey('importance', $result[$eyeName]);
     }
 
     public function testOverviewWhenAMultipleGoesWrong(){
