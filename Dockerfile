@@ -1,5 +1,5 @@
 FROM php:5.6
-MAINTAINER Roger Russel <rrussel@allin.com.br>
+MAINTAINER Roger Russel <roger@rrussel.org>
 
 ENV TERM=xterm
 RUN locale
@@ -18,8 +18,9 @@ RUN apt-get update && apt-get install -y \
   whois \
   && rm -rf /var/lib/apt/lists/*
 
-RUN pecl install yaml-1.3.1
-RUN pecl install redis-2.2.8
+RUN pecl install yaml-1.3.1 && docker-php-ext-enable yaml
+RUN pecl install redis-2.2.8 && docker-php-ext-enable redis
+RUN pecl install xdebug-2.5.5 && docker-php-ext-enable xdebug
 
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 RUN php composer-setup.php --install-dir=/usr/local/bin --filename=composer
