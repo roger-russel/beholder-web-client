@@ -7,11 +7,11 @@ require_once '/var/www/vendor/autoload.php';
 class HelperObserver  extends Observer {
 
   public function getImportanceAlias(){
-    return $this->importance_alias;
+    return $this->importanceAlias;
   }
 
   public function getImportanceDefault(){
-    return $this->importance_default;
+    return $this->importanceDefault;
   }
 
   public function getTimeZone(){
