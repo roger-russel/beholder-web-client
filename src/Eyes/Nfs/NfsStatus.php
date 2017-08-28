@@ -6,7 +6,7 @@ use BeholderWebClient\Eyes\Status;
 
 class NfsStatus extends Status {
 
-  const REQUERIMENT_FAIL = 'REQUERIMENT FAIL: stat command not found with type -P stat';
+  const REQUERIMENT_FAIL = 'REQUERIMENT FAIL: stat command not found with type -P mountpoint';
 
   const PATH_NOT_EXIST = 'Path doesn\'t exist: ';
   const PATH_NOT_EXIST_NUMBER = 600;

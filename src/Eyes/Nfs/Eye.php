@@ -7,9 +7,11 @@ use BeholderWebClient\Eyes\Nfs\NfsStatus as Status;
 
 Class Eye extends AbstractNfs {
 
+  const NOT_MOUNTED_STRING = 'is not a mountpoint';
+
   public function checkRequirement(){
 
-    $result = exec('type -P stat');
+    $result = exec('type -P mountpoint');
 
     if(!$result)
       throw new Exception(Status::REQUERIMENT_FAIL, Status::INTERNAL_SERVER_ERROR_NUMBER);
@@ -18,14 +20,11 @@ Class Eye extends AbstractNfs {
 
   protected function checkIfPathIsMounted() {
 
-   $cmd = 'stat -fc%t:%T ';
+   $cmd = 'mountpoint ';
 
-   $pathFather = realpath($this->path . '/../');
+   $return = shell_exec($cmd . $this->path);
 
-   $p = shell_exec($cmd . $this->path);
-   $f = shell_exec($cmd . $pathFather);
-
-   if( $p === $f )
+   if( $return !== false )
      throw new Exception(Status::NOT_MOUNTED, Status::NOT_MOUNTED_NUMBER);
 
   }
