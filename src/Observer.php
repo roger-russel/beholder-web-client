@@ -17,8 +17,8 @@ Class Observer implements iObserver {
   protected $env;
   protected $start;
 
-  protected $importance_alias;
-  protected $importance_default;
+  protected $importanceAlias;
+  protected $importanceDefault;
 
   protected $timezone;
 
@@ -31,7 +31,6 @@ Class Observer implements iObserver {
 
   public function __construct(){
     $this->start = microtime();
-
   }
 
   public function setConf($conf){
@@ -85,10 +84,11 @@ Class Observer implements iObserver {
       $eye->checkRequirement();
       $eye->look();
 
+      $code = $eye->getStatusCode();
+
       $return = [
-        'status' => $eye->getStatusCode(),
+        'status' => $code,
         'message' => $eye->getMessage(),
-        $this->importance_alias => empty($conf['importance'])? $this->importance_default : $conf['importance']
       ];
 
     } catch (Exception $ex){
@@ -99,10 +99,12 @@ Class Observer implements iObserver {
       $return = [
           'status' =>  $code,
           'message' => $ex->getMessage(),
-          $this->importance_alias => empty($conf['importance'])? $this->importance_default : $conf['importance']
       ];
 
     }
+
+    if($code !== 200)
+        $return[$this->importanceAlias] = empty($conf['importance'])? $this->importanceDefault : $conf['importance'];
 
     return $return;
 
@@ -133,17 +135,17 @@ Class Observer implements iObserver {
 
   protected function applyImportanceAlias(){
     if(empty($this->conf['settings']['importance_alias'])){
-      $this->importance_alias = self::IMPORTANCE_ALIAS;
+      $this->importanceAlias = self::IMPORTANCE_ALIAS;
     } else {
-      $this->importance_alias = $this->conf['settings']['importance_alias'];
+      $this->importanceAlias = $this->conf['settings']['importance_alias'];
     }
   }
 
   protected function applyImportanceDefault(){
     if(empty($this->conf['settings']['importance_default'])){
-      $this->importance_default = self::IMPORTANCE_DEFAULT;
+      $this->importanceDefault = self::IMPORTANCE_DEFAULT;
     } else {
-      $this->importance_default = $this->conf['settings']['importance_default'];
+      $this->importanceDefault = $this->conf['settings']['importance_default'];
     }
   }
 
