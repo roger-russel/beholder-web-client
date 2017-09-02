@@ -11,4 +11,6 @@ before_script:
   - composer install
   - tests/mysql/migrate.sh
 script:
-  - docker exec -it beholder-web-client bash -c 'vendor/bin/codecept run || exit $?'
+  - docker exec -it beholder-web-client bash -c 'vendor/bin/codecept run --coverage --coverage-xml || exit $?'
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
