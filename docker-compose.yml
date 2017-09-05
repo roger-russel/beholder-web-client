@@ -11,7 +11,7 @@ services:
       - ./:/var/www
       - ./tests/nfs/fixtures/mount:/mnt/read:ro
       - ./tests/nfs/fixtures/mount:/mnt/write
-    command: ["php", "-S", "localhost:80", "-t", "public"]
+    command: ["php", "-S", "localhost:80", "-t", "tests/acceptance/fixtures"]
 
 networks:
   default:
