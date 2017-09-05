@@ -20,6 +20,7 @@ RUN apt-get update && apt-get install -y \
   && rm -rf /var/lib/apt/lists/*
 
 RUN yes '' | pecl install yaml-1.3.1
+RUN pecl install redis-2.2.8
 
 RUN pecl install xdebug \
   && docker-php-ext-enable xdebug
@@ -38,4 +39,5 @@ RUN docker-php-ext-install \
   mysqli \
   pdo_pgsql \
   zip
+
 

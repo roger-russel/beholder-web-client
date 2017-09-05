@@ -1,9 +1,16 @@
 # Beholder Monitor - Php Web Client
 
 ![Travis:Master](https://travis-ci.org/roger-russel/beholder-web-client.svg?branch=master "Travis Master")
-![Try Beholder](https://raw.githubusercontent.com/RogerRussel/beholder-web-client/master/opt/img/beholder.jpg)
+[![Latest Version](https://img.shields.io/packagist/v/roger-russel/beholder-web-client.svg?style=flat-square)](https://packagist.org/packages/roger-russel/beholder-web-client)
+[![Packagist](https://img.shields.io/packagist/dt/roger-russel/beholder-web-client.svg)]()
+[![Software License](https://img.shields.io/badge/license-Apache-brightgreen.svg?style=flat-square)](LICENSE.md)
+
+
 
 Beholder is a simple php monitoring system, this client is made to serve a json response with the current stats of what is been monitored.
+
+![Try Beholder](https://raw.githubusercontent.com/RogerRussel/beholder-web-client/master/opt/img/beholder.jpg)
+
 
 This client can be used with Zabbix and others tools, just setup those to read the json file which this client give.
 
