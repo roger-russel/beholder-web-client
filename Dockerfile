@@ -19,7 +19,7 @@ RUN apt-get update && apt-get install -y \
   zlib1g-dev \
   && rm -rf /var/lib/apt/lists/*
 
-RUN pecl install yaml-1.3.1
+RUN yes '' | pecl install yaml-1.3.1
 
 RUN pecl install xdebug \
   && docker-php-ext-enable xdebug
