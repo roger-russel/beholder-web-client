@@ -1,6 +1,7 @@
 # Beholder Monitor - Php Web Client
 
 ![Travis:Master](https://travis-ci.org/roger-russel/beholder-web-client.svg?branch=master "Travis Master")
+[![Codecov branch](https://img.shields.io/codecov/c/github/roger-russel/beholder-web-client/master.svg)](https://codecov.io/gh/roger-russel/beholder-web-client)
 [![Latest Version](https://img.shields.io/packagist/v/roger-russel/beholder-web-client.svg?style=flat-square)](https://packagist.org/packages/roger-russel/beholder-web-client)
 [![Packagist](https://img.shields.io/packagist/dt/roger-russel/beholder-web-client.svg)]()
 [![Software License](https://img.shields.io/badge/license-Apache-brightgreen.svg?style=flat-square)](LICENSE.md)

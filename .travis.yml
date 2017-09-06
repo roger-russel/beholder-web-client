@@ -13,4 +13,6 @@ before_script:
   - tests/mysql/migrate.sh
 script:
   - cat opt/img/beholder-babe-2.ascii
-  - docker exec -it beholder-web-client bash -c 'vendor/bin/codecept run || exit $?'
+  - docker exec -it beholder-web-client bash -c 'vendor/bin/codecept run --coverage --coverage-xml || exit $?'
+after_success:
+  - bash <(curl -s https://codecov.io/bash) -s ./tests/_output
