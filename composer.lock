@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "1b3b2319e005d495d050b3d208ae2f75",
+    "content-hash": "b42c922ba7158562a7aadbdf32d72f9f",
     "packages": [],
     "packages-dev": [
         {
@@ -65,6 +65,56 @@
                 "parser"
             ],
             "time": "2016-10-30T11:50:56+00:00"
+        },
+        {
+            "name": "codeception/c3",
+            "version": "2.0.12",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Codeception/c3.git",
+                "reference": "f08f20b0b6191f0c58be022c6f20d5b1cdc1004c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Codeception/c3/zipball/f08f20b0b6191f0c58be022c6f20d5b1cdc1004c",
+                "reference": "f08f20b0b6191f0c58be022c6f20d5b1cdc1004c",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0",
+                "php": ">=5.4.0"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "Codeception\\c3\\Installer"
+            },
+            "autoload": {
+                "psr-4": {
+                    "Codeception\\c3\\": "."
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tiger Seo",
+                    "email": "tiger.seo@gmail.com"
+                },
+                {
+                    "name": "Michael Bodnarchuk",
+                    "email": "davert.php@codegyre.com",
+                    "homepage": "http://codegyre.com"
+                }
+            ],
+            "description": "CodeCoverage collector for Codeception",
+            "homepage": "http://codeception.com/",
+            "keywords": [
+                "code coverage",
+                "codecoverage"
+            ],
+            "time": "2017-04-06T00:08:55+00:00"
         },
         {
             "name": "codeception/codeception",
@@ -2362,6 +2412,8 @@
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "php": ">=5.6"
+    },
     "platform-dev": []
 }

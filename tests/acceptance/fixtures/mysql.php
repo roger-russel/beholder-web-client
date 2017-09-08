@@ -1,7 +1,5 @@
 <?php
 
-require __DIR__ . '/bootstrap.php';
-
 $conf = [
   'eyes' => [
       'DB:allin' => [

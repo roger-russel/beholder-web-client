@@ -16,10 +16,14 @@ RUN apt-get update && apt-get install -y \
   libpq-dev \
   build-essential \
   whois \
+  zlib1g-dev \
   && rm -rf /var/lib/apt/lists/*
 
-RUN pecl install yaml-1.3.1
+RUN yes '' | pecl install yaml-1.3.1
 RUN pecl install redis-2.2.8
+
+RUN pecl install xdebug \
+  && docker-php-ext-enable xdebug
 
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 RUN php composer-setup.php --install-dir=/usr/local/bin --filename=composer
@@ -33,6 +37,7 @@ RUN docker-php-ext-install \
   pdo \
   pdo_mysql \
   mysqli \
-  pdo_pgsql
+  pdo_pgsql \
+  zip
 
-CMD ["php", "-S", "0.0.0.0:80", "-t", "tests/acceptance/fixtures"]
+
