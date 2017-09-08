@@ -17,6 +17,7 @@ RUN apt-get update && apt-get install -y \
   build-essential \
   whois \
   zlib1g-dev \
+  nfs-common \
   && rm -rf /var/lib/apt/lists/*
 
 RUN yes '' | pecl install yaml-1.3.1
@@ -39,5 +40,3 @@ RUN docker-php-ext-install \
   mysqli \
   pdo_pgsql \
   zip
-
-
