@@ -9,8 +9,10 @@ before_script:
   - tests/mysql/travis.sh
   - tests/postgresql/travis.sh
   - tests/redis/travis.sh
+  - tests/nfs/travis.sh
   - composer install
   - tests/mysql/migrate.sh
+  - tests/nfs/mount.sh
 script:
   - cat opt/img/beholder-babe-2.ascii
   - docker exec -it beholder-web-client bash -c 'vendor/bin/codecept run --coverage --coverage-xml || exit $?'
