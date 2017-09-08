@@ -9,8 +9,6 @@ services:
     volumes:
       - ./opt/php/php.ini:/usr/local/etc/php/php.ini:ro
       - ./:/var/www
-      - ./tests/nfs/fixtures/mount:/mnt/read:ro
-      - ./tests/nfs/fixtures/mount:/mnt/write
     command: ["php", "-S", "localhost:80", "-t", "tests/acceptance/fixtures"]
 
 networks:
