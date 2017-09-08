@@ -2,25 +2,20 @@
 
 # Make sure we react to these signals by running stop() when we see them - for clean shutdown
 # And then exiting
-trap "stop; exit 0;" SIGTERM SIGINT 
+trap "stop; exit 0;" SIGTERM SIGINT
 
 stop()
 {
   # We're here because we've seen SIGTERM, likely via a Docker stop command or similar
   # Let's shutdown cleanly
   echo "SIGTERM caught, terminating NFS process(es)..."
-  /usr/sbin/exportfs -ua 
+  /usr/sbin/exportfs -ua
   pid1=$(pidof rpc.nfsd)
   pid2=$(pidof rpc.mountd)
   kill -TERM $pid1 $pid2 > /dev/null 2>&1
   echo "Terminated."
   exit
 }
-
-if [ -z "$SHARED_DIRECTORY" ]; then
-  echo "The SHARED_DIRECTORY environment variable is null, exiting..."
-  exit 1
-fi
 
 # This loop runs till until we've started up successfully
 while true; do
@@ -52,7 +47,7 @@ while true; do
     echo "Starting NFS in the background..."
     /usr/sbin/rpc.nfsd --debug 8 --no-udp --no-nfs-version 2 --no-nfs-version 3
     echo "Exporting File System..."
-    /usr/sbin/exportfs -rv 
+    /usr/sbin/exportfs -rv
     echo "Starting Mountd in the background..."
     /usr/sbin/rpc.mountd --debug all --no-udp --no-nfs-version 2 --no-nfs-version 3
 # --exports-file /etc/exports
