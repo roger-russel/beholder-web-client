@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine:alpine:3.6
 LABEL maintainer "Roger Russel <roger@rrussel.org>"
 COPY Dockerfile /Dockerfile
 
