@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+  beholder-test-nfs:
+    build: docker-fixtures/.
+    container_name: beholder-test-nfs
+    ports:
+      - "2049:2049"
+    environment:
+      - TERM=xterm
+      - LANG=en_US.UTF-8
+
+networks:
+  default:
+    external:
+      name: beholder-network
