@@ -16,17 +16,30 @@ Class Eye extends AbstractInode {
   }
 
   public function verifyStorage(){
-    $result = exec('df -i');
+    $result = shell_exec('df -i');
     $m = [];
 
-    $regx = "/^.*?([\d]+%)[\s]+{$this->conf['storage_path']}\$/";
+    $path = $this->scapeBar($this->conf['storage_path']);
+
+    $regx = "/^.*?([\d]+%)[\s]+{$path}$/m";
+
     preg_match($regx, $result, $m);
+
+    if(!isset($m[1]))
+      throw new Exception(
+        Status::STORAGE_PATH_NOT_FOUND . ' ' . $this->conf['storage_path'],
+        Status::EXPECTATION_FAILED_NUMBER
+      );
 
     $inodes_usage = (int)$m[1];
 
-    if( $inodes_usage > $this->conf['acceptable_percents_usage'])
+    if( $inodes_usage > (int)$this->conf['acceptable_percents_usage'])
       throw new Exception(Status::MAX_USAGE_ALLOWED, STATUS::MAX_USAGE_ALLOWED_NUMBER);
 
+  }
+
+  protected function scapeBar($string){
+    return str_replace('/','\/', $string);
   }
 
 }

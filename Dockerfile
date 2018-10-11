@@ -1,4 +1,4 @@
-FROM php:5.6
+FROM php:7.2
 MAINTAINER Roger Russel <rrussel@allin.com.br>
 
 ENV TERM=xterm
@@ -19,8 +19,8 @@ RUN apt-get update && apt-get install -y \
   zlib1g-dev \
   && rm -rf /var/lib/apt/lists/*
 
-RUN yes '' | pecl install yaml-1.3.1
-RUN pecl install redis-2.2.8
+RUN yes '' | pecl install yaml
+RUN pecl install redis
 
 RUN pecl install xdebug \
   && docker-php-ext-enable xdebug

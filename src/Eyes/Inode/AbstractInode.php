@@ -5,13 +5,10 @@ namespace BeholderWebClient\Eyes\Inode;
 use Exception;
 use BeholderWebClient\Eyes\AbstractEye;
 
-abstract class AbstractNfs extends AbstractEye implements iInode {
+abstract class AbstractInode extends AbstractEye implements iInode {
 
   protected $code;
   protected $message;
-
-  abstract protected function checkRequirement();
-  abstract protected function verifyStorage();
 
   public function getStatusCode(){
     return $this->code;
@@ -42,8 +39,8 @@ abstract class AbstractNfs extends AbstractEye implements iInode {
   }
 
   protected function checkParamtersGiven(){
-    $this->conf['storage_path'] = '/storage';
-    $this->conf['acceptable_percents_usage'] = 70;
+    //$this->conf['storage_path'] = '/storage';
+    //$this->conf['acceptable_percents_usage'] = 70;
   }
 
 }
